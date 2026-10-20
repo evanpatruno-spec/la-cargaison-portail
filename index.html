@@ -179,25 +179,27 @@
     </section>
 
     <!-- ====================================================================
-         03. VUE MAILLAGE, CHANTIERS, ÉQUIPEMENTS, BOURSES (#11, #12, #14) & CALENDRIER
+         03. VUE MAILLAGE, GROUPES DE TRAVAIL (#13), ÉQUIPEMENTS (#11), COMPÉTENCES (#12), RADAR BOURSES (#14) & LIEUX (#15)
          ==================================================================== -->
     <section id="view-maillage" class="view-section">
       <div class="section-header">
         <div>
-          <span class="section-header__kicker">Vie du collectif &amp; rayonnement externe</span>
-          <h1 class="section-header__title">Maillage, chantiers, bourses &amp; calendrier</h1>
+          <span class="section-header__kicker">Vie du collectif, mutualisation &amp; rayonnement externe</span>
+          <h1 class="section-header__title">Maillage, groupes de travail, mutualisation &amp; diffusion</h1>
           <p class="section-header__desc">
-            Outil de jumelage rapide par besoin, appels à collaborateurs, duos en chantier, prêt mutuel d'équipement, veille des bourses et calendrier public.
+            Babillard d'appels, groupes de travail dédiés, banque d'équipements, bourse d'entraide professionnelle, radar des subventions et répertoire des lieux partenaires.
           </p>
         </div>
       </div>
 
       <div class="subnav-bar" id="maillageSubnav">
-        <button type="button" class="subnav-btn active" data-msub="babillard">Babillard &amp; Jumelage rapide</button>
-        <button type="button" class="subnav-btn" data-msub="chantiers">Chantiers &amp; duos en cours</button>
-        <button type="button" class="subnav-btn" data-msub="equipements">Prêt d'équipement &amp; ateliers</button>
-        <button type="button" class="subnav-btn" data-msub="bourses">Bourses &amp; appels de dossiers</button>
-        <button type="button" class="subnav-btn" data-msub="calendrier">Calendrier hors-les-murs (Public)</button>
+        <button type="button" class="subnav-btn active" data-msub="babillard">Babillard &amp; Jumelage</button>
+        <button type="button" class="subnav-btn" data-msub="chantiers">Groupes de travail (#13)</button>
+        <button type="button" class="subnav-btn" data-msub="equipements">Banque d'équipements (#11)</button>
+        <button type="button" class="subnav-btn" data-msub="competences">Compétences croisées (#12)</button>
+        <button type="button" class="subnav-btn" data-msub="bourses">Radar bourses &amp; appels (#14)</button>
+        <button type="button" class="subnav-btn" data-msub="lieux">Lieux partenaires (#15)</button>
+        <button type="button" class="subnav-btn" data-msub="calendrier">Calendrier hors-les-murs</button>
       </div>
 
       <div id="maillageContentArea"></div>
@@ -228,15 +230,15 @@
     </section>
 
     <!-- ====================================================================
-         05. VUE GOUVERNANCE C.A. (Générateur de Lettre d'appui #16 & Adhésions #15)
+         05. VUE GOUVERNANCE C.A. (Ordre du jour #16, Suivi budgétaire #17, Lettres d'appui & Adhésions)
          ==================================================================== -->
     <section id="view-ca-admin" class="view-section">
       <div class="section-header">
         <div>
           <span class="section-header__kicker">Conseil d'administration — OBNL La Cargaison</span>
-          <h1 class="section-header__title">Gouvernance &amp; suivi du C.A.</h1>
+          <h1 class="section-header__title">Gouvernance, budget &amp; suivi du C.A.</h1>
           <p class="section-header__desc">
-            Génération automatique des lettres d'appui officielles, évaluation des projets selon la grille 50 / 30 / 20 et validation des nouvelles demandes d'adhésion.
+            Suivi budgétaire par projet (#17), générateur d'ordre du jour et de convocation C.A./AGA (#16), lettres d'appui officielles, grille 50/30/20 et adhésions.
           </p>
         </div>
       </div>
@@ -273,6 +275,13 @@
          ==================================================================== -->
     <section id="view-artiste-detail" class="view-section">
       <div id="artisteSubpageContainer"></div>
+    </section>
+
+    <!-- ====================================================================
+         SOUS-PAGE DÉDIÉE : ESPACE GROUPE DE TRAVAIL / COMITÉ (#/projets/[id]) (#13)
+         ==================================================================== -->
+    <section id="view-projet-detail" class="view-section">
+      <div id="projetSubpageContainer"></div>
     </section>
 
   </main>

@@ -1,8 +1,8 @@
 /* ==========================================================================
-   LA CARGAISON — LOGIQUE DU PORTAIL V4 (SOUS-PAGES, 99 MEMBRES & 15 OUTILS)
+   LA CARGAISON — LOGIQUE DU PORTAIL V5 (SOUS-PAGES, 99 MEMBRES & 23 OUTILS)
    ========================================================================== */
 
-const STORAGE_KEY = 'lacargaison_portal_v4_complete';
+const STORAGE_KEY = 'lacargaison_portal_v5_complete';
 
 const INITIAL_DATA = {
   currentRole: 'member', // 'public' | 'member' | 'admin'
@@ -63,7 +63,7 @@ const INITIAL_DATA = {
     }
   ],
 
-  // ŒUVRES 100 % RÉELLES avec #5 : Co-créateurs membres rattachés (coArtistIds)
+  // ŒUVRES 100 % RÉELLES avec #5 : Co-créateurs membres & #10 : Fiche technique (techRider)
   works: [
     {
       id: 'work-real-1',
@@ -86,7 +86,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2025/04/Cargaison_Concret_avantpremiere_JessycaVG_54-1024x683.jpg'
       ],
       embedUrl: '',
-      description: 'Création célébrant les 50 ans de carrière du peintre Roger Alexandre (membre de La Cargaison) au cœur de la cathédrale Saint-Jean-l’Évangéliste. Photographies d’avant-première : Jessyca Viens-Gaboriau.'
+      description: 'Création célébrant les 50 ans de carrière du peintre Roger Alexandre (membre de La Cargaison) au cœur de la cathédrale Saint-Jean-l’Évangéliste. Photographies d’avant-première : Jessyca Viens-Gaboriau.',
+      techRider: {
+        spaceRequired: 'Nef architecturale ou salle immersive (plafond min. 5 m) + cimaises pour tableaux originaux',
+        lightingAudio: 'Dispositif multi-projecteurs HD (14 canaux Mur [à] mur) + diffusion sonore spatialisée',
+        setupDuration: 'Durée : 25 min en boucle — Montage et calibrage : 1 journée',
+        insuranceTransport: 'Assurance exposition clou à clou pour les toiles originales + licence de diffusion numérique'
+      }
     },
     {
       id: 'work-real-2',
@@ -109,7 +115,13 @@ const INITIAL_DATA = {
         'https://framerusercontent.com/images/ACZBPMzASfr8GFaNhOyAFyTu7s.jpg'
       ],
       embedUrl: '',
-      description: 'Œuvres et installations interactives réalisées par Clément Boucher (LeGars), créateur multimédia membre de La Cargaison : M.O.N.A II (2025), Ratattck (2025), L’Art et la nature (2025), Carignan en couleurs (2025) et La belle échappée – Phase 2 (2025).'
+      description: 'Œuvres et installations interactives réalisées par Clément Boucher (LeGars), créateur multimédia membre de La Cargaison : M.O.N.A II (2025), Ratattck (2025), L’Art et la nature (2025), Carignan en couleurs (2025) et La belle échappée – Phase 2 (2025).',
+      techRider: {
+        spaceRequired: 'Surface de projection intérieure ou façade architecturale extérieure (obscurité contrôlée)',
+        lightingAudio: 'Serveur média TouchDesigner / MadMapper, capteurs interactifs et vidéoprojecteurs laser 10 000+ lumens',
+        setupDuration: 'Montage et mapping : 6 h à 12 h selon le lieu — Diffusion continue ou événementielle',
+        insuranceTransport: 'Équipement informatique et capteurs fournis ou intégrés au parc technique du diffuseur'
+      }
     },
     {
       id: 'work-real-3',
@@ -130,7 +142,13 @@ const INITIAL_DATA = {
         'https://img-cache.oppcdn.com/fixed/38715/assets/58bR4_ZE_1pqzwCa.jpg'
       ],
       embedUrl: '',
-      description: 'Séries réalisées par Dominique Paul, PhD (membre de La Cargaison) autour du déclin de la biodiversité, des migrations et des enjeux géopolitiques : Silent Fall / Silent Spring, Talk-to-Me: interactive bird, Birds at Risk, Bumble Bees at Risk et Insects of Surinam.'
+      description: 'Séries réalisées par Dominique Paul, PhD (membre de La Cargaison) autour du déclin de la biodiversité, des migrations et des enjeux géopolitiques : Silent Fall / Silent Spring, Talk-to-Me: interactive bird, Birds at Risk, Bumble Bees at Risk et Insects of Surinam.',
+      techRider: {
+        spaceRequired: 'Salle d’exposition (cimaises 10 m linéaires) + espace central dégagé pour sculpture/œuvre portable',
+        lightingAudio: 'Éclairage directionnel de galerie + alimentation électrique 15A pour dispositif interactif sonore',
+        setupDuration: 'Installation : 1 journée — Performance d’ouverture possible avec l’artiste',
+        insuranceTransport: 'Caisses de transport muséales — Barèmes CARFAC applicables'
+      }
     },
     {
       id: 'work-real-4',
@@ -152,7 +170,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2026/03/Cargaison_hommage_Leonard_Cohen_MQE_4-1024x683.jpg'
       ],
       embedUrl: '',
-      description: 'Interprétation des œuvres de Leonard Cohen par Thomas Hodgson (voix et guitare) accompagné de Frédéric Samson à la contrebasse, dans une scénographie numérique à la cathédrale Saint-Jean-l’Évangéliste. Crédits photo : Marianne Quintal-Émard.'
+      description: 'Interprétation des œuvres de Leonard Cohen par Thomas Hodgson (voix et guitare) accompagné de Frédéric Samson à la contrebasse, dans une scénographie numérique à la cathédrale Saint-Jean-l’Évangéliste. Crédits photo : Marianne Quintal-Émard.',
+      techRider: {
+        spaceRequired: 'Scène minimale 5 m × 4 m avec écran de fond ou surface architecturale de projection',
+        lightingAudio: 'Console numérique (1 micro voix dynamique/condensateur, 2 DI guitare/contrebasse, 2 retours de scène)',
+        setupDuration: 'Durée : 75 min (sans entracte) — Balance de son et raccord vidéo : 3 h',
+        insuranceTransport: 'Équipe en tournée : 2 musiciens + 1 régisseur multimédia'
+      }
     },
     {
       id: 'work-real-5',
@@ -172,7 +196,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2024/10/archambault-luc.jpg'
       ],
       embedUrl: '',
-      description: 'Œuvres photographiques de Luc Archambault (photographe et comédien membre de La Cargaison), issues de son portfolio Flickr officiel (127 photographies en ligne).'
+      description: 'Œuvres photographiques de Luc Archambault (photographe et comédien membre de La Cargaison), issues de son portfolio Flickr officiel (127 photographies en ligne).',
+      techRider: {
+        spaceRequired: 'Cimaises de galerie — Tirages encadrés ou montés sous acrylique',
+        lightingAudio: 'Éclairage de galerie standard anti-reflet (3000K - 3500K)',
+        setupDuration: 'Accrochage : demi-journée',
+        insuranceTransport: 'Tirages numérotés et signés disponibles sur commande ou prêt d’exposition'
+      }
     },
     {
       id: 'work-real-6',
@@ -192,7 +222,13 @@ const INITIAL_DATA = {
         'https://yt3.googleusercontent.com/KDjDWZFR0zRFTRj4S5C9m_xw_kLgPTdazBTEcNxDm9A7UCT757V3clOsDJhWXzsJVr2Aos4iAQ=s900-c-k-c0x00ffffff-no-rj'
       ],
       embedUrl: '',
-      description: 'Projet au long cours d’Alexandre Belliard (ACI, chroniqueur, conférencier et poète établi en Montérégie) consacré à faire rayonner l’histoire et la culture de l’Amérique francophone en chansons.'
+      description: 'Projet au long cours d’Alexandre Belliard (ACI, chroniqueur, conférencier et poète établi en Montérégie) consacré à faire rayonner l’histoire et la culture de l’Amérique francophone en chansons.',
+      techRider: {
+        spaceRequired: 'Salle de spectacle, maison de la culture, auditorium, bibliothèque ou lieu patrimonial',
+        lightingAudio: 'Formule solo (voix, guitare acoustique, projection historique HDMI) ou formule avec musiciens accompagnateurs',
+        setupDuration: 'Durée : 60 à 90 min (avec période d’échanges) — Montage : 90 min',
+        insuranceTransport: 'Clé en main pour réseaux scolaires, municipaux et diffuseurs pluridisciplinaires'
+      }
     },
     {
       id: 'work-real-7',
@@ -216,7 +252,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2024/11/JVG08582-1024x683.jpg'
       ],
       embedUrl: '',
-      description: 'Série de photographies réalisées par Jessyca Viens-Gaboriau (membre photographe de La Cargaison) documentant les créations L’Art et la nature (2025), Noël Illuminé (2025) et À la belle Étoile (2024).'
+      description: 'Série de photographies réalisées par Jessyca Viens-Gaboriau (membre photographe de La Cargaison) documentant les créations L’Art et la nature (2025), Noël Illuminé (2025) et À la belle Étoile (2024).',
+      techRider: {
+        spaceRequired: 'Exposition en tirages grand format (24×36 po) ou diffusion sur écrans haute définition',
+        lightingAudio: 'Éclairage ponctuel sur tirages papier baryté / Hahnemühle',
+        setupDuration: 'Accrochage : 3 h',
+        insuranceTransport: 'Fichiers haute résolution ou tirages encadrés disponibles auprès de la photographe'
+      }
     },
     {
       id: 'work-real-8',
@@ -239,7 +281,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2025/03/KIM0149-1024x684.jpg'
       ],
       embedUrl: '',
-      description: 'Documentation photographique signée Kim Valiquette (membre de La Cargaison) de l’œuvre extérieure Chaleur et lumières projetée sur l’usine de filtration de Salaberry-de-Valleyfield pour le 150e anniversaire de la ville.'
+      description: 'Documentation photographique signée Kim Valiquette (membre de La Cargaison) de l’œuvre extérieure Chaleur et lumières projetée sur l’usine de filtration de Salaberry-de-Valleyfield pour le 150e anniversaire de la ville.',
+      techRider: {
+        spaceRequired: 'Tirages photographiques sur aluminium brossé ou papier beaux-arts',
+        lightingAudio: 'Éclairage muséal orientable',
+        setupDuration: 'Accrochage : 2 h',
+        insuranceTransport: 'Droits de reproduction et tirages gérés directement avec l’artiste'
+      }
     },
     {
       id: 'work-real-9',
@@ -259,7 +307,13 @@ const INITIAL_DATA = {
       ],
       textExcerpt: '« Les métiers que j’exerce (acteur, auteur, compositeur, photographe, artiste numérique, cinéaste…) me servent à raconter le monde à ma manière, m’amusant à débusquer l’extraordinaire dans l’ordinaire. »',
       embedUrl: '',
-      description: 'Publications littéraires, chroniques et réflexions artistiques de Pierre Cavale sur sa plateforme Substack officielle liée depuis lacargaison.org.'
+      description: 'Publications littéraires, chroniques et réflexions artistiques de Pierre Cavale sur sa plateforme Substack officielle liée depuis lacargaison.org.',
+      techRider: {
+        spaceRequired: 'Lecture publique, cabaret littéraire ou intégration narrative sonore en exposition',
+        lightingAudio: '1 microphone sur pied + lutrin éclairé (et projection visuelle optionnelle)',
+        setupDuration: 'Intervention de 20 à 60 min — Montage : 30 min',
+        insuranceTransport: 'Aucun transport lourd requis'
+      }
     },
     {
       id: 'work-real-10',
@@ -279,7 +333,13 @@ const INITIAL_DATA = {
       ],
       textExcerpt: '« Je suis une artiste en arts visuels, je fais du dessin, de l’aquarelle, de l’acrylique et, à l’occasion, de la photo d’art. J’aime représenter la beauté de l’humain et de la nature au-delà de la banalité des apparences. »',
       embedUrl: '',
-      description: 'Présentation et publications visuelles de Christiane Litalien issues de ses pages Substack et Instagram liées sur le site officiel de La Cargaison.'
+      description: 'Présentation et publications visuelles de Christiane Litalien issues de ses pages Substack et Instagram liées sur le site officiel de La Cargaison.',
+      techRider: {
+        spaceRequired: 'Cimaises d’exposition (œuvres sur papier encadrées sous verre et toiles sur châssis)',
+        lightingAudio: 'Éclairage doux sans rayons UV directs (conservation des aquarelles et œuvres sur papier)',
+        setupDuration: 'Accrochage sur tiges ou crochets : 3 h',
+        insuranceTransport: 'Emballage à plat et protection des encadrements'
+      }
     },
     {
       id: 'work-real-11',
@@ -302,7 +362,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2025/08/Cargaison_NDIlePerrot_JVG_5-1024x683.jpg'
       ],
       embedUrl: '',
-      description: 'Créations narratives et scénographiques rendant hommage à Félix-Gabriel Marchand et Joséphine Marchand-Dandurand (De père en fille, 2025) ainsi qu’à l’histoire ferroviaire de Notre-Dame-de-l’Île-Perrot (Bibliothèque Marie-Uguay).'
+      description: 'Créations narratives et scénographiques rendant hommage à Félix-Gabriel Marchand et Joséphine Marchand-Dandurand (De père en fille, 2025) ainsi qu’à l’histoire ferroviaire de Notre-Dame-de-l’Île-Perrot (Bibliothèque Marie-Uguay).',
+      techRider: {
+        spaceRequired: 'Espace muséal, bibliothèque ou nef permettant décor scénographique + projection',
+        lightingAudio: 'Projecteurs vidéo courte focale, bande sonore narrative synchronisée et éclairage théâtral',
+        setupDuration: 'Montage scénographique et intégration : 1 à 2 jours',
+        insuranceTransport: 'Transport des éléments de décor et mobilier scénique par fourgon'
+      }
     },
     {
       id: 'work-real-12',
@@ -321,7 +387,13 @@ const INITIAL_DATA = {
         'https://www.lacargaison.org/wp-content/uploads/2025/01/Cargaison_membre_Evan_Patruno.jpg'
       ],
       embedUrl: '',
-      description: 'Portfolio et page d’artiste officielle d’Evan Patruno (Artiste en arts visuels et membre du C.A. de La Cargaison), ayant notamment participé à des expositions collectives dans la région (dont l’exposition au Domaine du Ridge avec le membre Andrew Jason / Shawn AJ Christie).'
+      description: 'Portfolio et page d’artiste officielle d’Evan Patruno (Artiste en arts visuels et membre du C.A. de La Cargaison), ayant notamment participé à des expositions collectives dans la région (dont l’exposition au Domaine du Ridge avec le membre Andrew Jason / Shawn AJ Christie).',
+      techRider: {
+        spaceRequired: 'Cimaises d’exposition en galerie, centre d’art ou espace culturel partenaire',
+        lightingAudio: 'Éclairage directionnel sur rail 3000K mettant en valeur la texture picturale',
+        setupDuration: 'Accrochage : 2 à 3 h (système d’attaches galerie inclus au dos des œuvres)',
+        insuranceTransport: 'Transport assuré par l’artiste en Montérégie / Grand Montréal'
+      }
     }
   ],
 
@@ -357,22 +429,40 @@ const INITIAL_DATA = {
     }
   ],
 
+  // #13 : Groupes de travail / Comités artistiques avec sous-page dédiée (#/projets/[id]), jalons et fil de travail
   chantiers: [
     {
       id: 'chantier-1',
       title: 'Du concret vers l’immatériel — Arts visuels, Numérique & Photographie',
-      members: ['roger-alexandre', 'philippe-corriveau', 'jessyca-viens-gaboriau'],
+      members: ['roger-alexandre', 'philippe-corriveau', 'jessyca-viens-gaboriau', 'evan-patruno'],
       disciplines: 'Peinture, Création numérique 2D/3D & Photographie',
-      stage: 'Œuvre créée et diffusée à la cathédrale Saint-Jean-l’Évangéliste (2025)',
-      target: 'Diffusion et rayonnement des œuvres'
+      stage: 'Œuvre créée et diffusée à la cathédrale Saint-Jean-l’Évangéliste — En tournée régionale',
+      target: 'Diffusion et rayonnement des œuvres en Montérégie',
+      milestones: [
+        { id: 'm-1', title: 'Sélection et numérisation haute résolution du corpus pictural de Roger Alexandre', due: 'Complété', owner: 'Roger Alexandre & Jessyca Viens-Gaboriau', done: true },
+        { id: 'm-2', title: 'Animation 2D/3D et intégration sur les 14 projecteurs Mur [à] mur', due: 'Complété', owner: 'Philippe Corriveau', done: true },
+        { id: 'm-3', title: 'Préparation du dossier de diffusion hors-les-murs pour les maisons de la culture', due: 'Automne 2026', owner: 'Evan Patruno & Comité diffusion', done: false }
+      ],
+      discussions: [
+        { authorName: 'Roger Alexandre', date: 'Archive création', text: 'La transposition numérique respecte fidèlement la matière et la gestuelle des toiles originales.' },
+        { authorName: 'Jessyca Viens-Gaboriau', date: 'Suivi', text: 'Les photographies haute résolution de l’avant-première sont prêtes pour le dossier de presse.' }
+      ]
     },
     {
       id: 'chantier-2',
       title: 'Hommage à Leonard Cohen — Musique, Scénographie numérique & Photo',
       members: ['thomas-hodgson', 'marianne-quintal-emard'],
       disciplines: 'Voix, Guitare, Projection immersive & Photographie de scène',
-      stage: 'Présenté à la cathédrale Saint-Jean-l’Évangéliste (2026)',
-      target: 'Programmation La Cargaison'
+      stage: 'Présenté à la cathédrale Saint-Jean-l’Évangéliste (2026) — Prêt pour tournée',
+      target: 'Programmation La Cargaison & Diffuseurs partenaires',
+      milestones: [
+        { id: 'm-21', title: 'Arrangements musicaux (voix, guitare, contrebasse) et répétitions en nef', due: 'Complété', owner: 'Thomas Hodgson', done: true },
+        { id: 'm-22', title: 'Captation photographique officielle du spectacle', due: 'Complété', owner: 'Marianne Quintal-Émard', done: true },
+        { id: 'm-23', title: 'Dépôt aux réseaux de diffusion municipaux 2026-2027', due: 'Novembre 2026', owner: 'Thomas Hodgson', done: false }
+      ],
+      discussions: [
+        { authorName: 'Thomas Hodgson', date: 'Production', text: 'La fiche technique (Technical Rider) est finalisée pour les salles de 150 à 400 places.' }
+      ]
     },
     {
       id: 'chantier-3',
@@ -380,45 +470,222 @@ const INITIAL_DATA = {
       members: ['clement-boucher', 'francoise-dancause', 'marjolaine-quintal'],
       disciplines: 'Création 2D/3D, Jeux vidéo interactifs, Narration & Scénographie',
       stage: 'Création originale diffusée à Saint-Jean-sur-Richelieu (2025)',
-      target: 'Expérience immersive et interactive'
+      target: 'Expérience immersive et interactive',
+      milestones: [
+        { id: 'm-31', title: 'Conception narrative et scénographique en nef', due: 'Complété', owner: 'Françoise Dancause & Marjolaine Quintal', done: true },
+        { id: 'm-32', title: 'Programmation interactive TouchDesigner et stations VR', due: 'Complété', owner: 'Clément Boucher', done: true }
+      ],
+      discussions: []
     }
   ],
 
+  // #11 : Banque de mutualisation d'équipements et d'espaces entre membres
   equipements: [
     {
       id: 'eq-1',
       ownerId: 'francoise-dancause',
-      type: 'Lieu de création et diffusion — La Cargaison',
+      type: 'Espace d’atelier / Répétition',
       title: 'Mur [à] mur — Cathédrale Saint-Jean-l’Évangéliste (215, rue Longueuil)',
-      conditions: 'Dispositif de 14 projecteurs, système sonore immersif, stations de réalité virtuelle et espaces d’expérimentation.'
+      availabilityBadge: 'Sur réservation C.A.',
+      specs: '14 projecteurs laser HD, système sonore immersif multicanal, stations de réalité virtuelle et nef d’expérimentation.',
+      conditions: 'Accessible aux membres actifs pour les résidences, laboratoires de recherche-création et projets collectifs adoptés.'
+    },
+    {
+      id: 'eq-2',
+      ownerId: 'clement-boucher',
+      type: 'Équipement numérique / Projection',
+      title: 'Kit de capteurs interactifs (LiDAR / Kinect Azure) & Boîtier d’acquisition SDI/HDMI',
+      availabilityBadge: 'Prêt solidaire entre membres',
+      specs: 'Compatible TouchDesigner, MadMapper et Resolume Arena pour installations réactives au mouvement.',
+      conditions: 'Prêt gratuit pour tests en atelier entre membres de La Cargaison ou location solidaire pour exposition.'
+    },
+    {
+      id: 'eq-3',
+      ownerId: 'jessyca-viens-gaboriau',
+      type: 'Outillage / Arts visuels & Scénographie',
+      title: 'Ensemble d’éclairage studio portatif (2 flashs sur batterie + boîte à lumière) pour reproduction d’œuvres',
+      availabilityBadge: 'Disponible au prêt / Tarif membre',
+      specs: 'Température calibrée 5500K sans reflet pour photographier tableaux, sculptures et installations.',
+      conditions: 'Disponible sur rendez-vous à Saint-Jean-sur-Richelieu pour documenter les portfolios des membres.'
+    },
+    {
+      id: 'eq-4',
+      ownerId: 'thomas-hodgson',
+      type: 'Audio / Enregistrement',
+      title: 'Système de sonorisation compact (2 enceintes actives QSC + console 12 pistes + 4 micros)',
+      availabilityBadge: 'Prêt solidaire entre membres',
+      specs: 'Idéal pour vernissages, lectures publiques, cabarets littéraires et performances acoustiques hors-les-murs.',
+      conditions: 'Mutualisation entre membres pour événements culturels en Montérégie.'
     }
   ],
 
-  // #14 : Tableau des bourses, appels de dossiers et résidences
+  // #12 : Répertoire des compétences croisées (« Bourse d'entraide professionnelle »)
+  competences: [
+    {
+      id: 'comp-1',
+      memberId: 'jessyca-viens-gaboriau',
+      domain: 'Photographie d’œuvres & Captation scénique',
+      title: 'Documentation photographique professionnelle d’œuvres d’art, vernissages et spectacles en basse lumière',
+      modality: 'Tarif solidaire membre / Échange de services',
+      details: 'Photographie haute résolution calibrée pour vos demandes de bourses CALQ/CAC, portfolios et affiches.'
+    },
+    {
+      id: 'comp-2',
+      memberId: 'clement-boucher',
+      domain: 'Intégration multimédia, Mapping & 3D',
+      title: 'Accompagnement technique en projection vidéo (MadMapper / TouchDesigner) et interactivité',
+      modality: 'Co-création / Mentorat technique entre membres',
+      details: 'Aide aux artistes en arts visuels, musique ou scène souhaitant intégrer de la vidéo générative ou du mapping à leur œuvre.'
+    },
+    {
+      id: 'comp-3',
+      memberId: 'francoise-dancause',
+      domain: 'Rédaction, Dramaturgie & Dossiers de subvention',
+      title: 'Relecture critique, structuration narrative et conseil sur les dossiers CALQ / CAC / Ententes culturelles',
+      modality: 'Entraide collective / Consultation',
+      details: 'Appui à la formulation de la démarche artistique, du mérite et de l’impact culturel des projets de maillage.'
+    },
+    {
+      id: 'comp-4',
+      memberId: 'evan-patruno',
+      domain: 'Commissariat, Arts visuels & Gouvernance',
+      title: 'Conseil en mise en espace d’expositions collectives, présentation de portfolio et liaison C.A.',
+      modality: 'Bénévolat C.A. / Entraide entre membres',
+      details: 'Accompagnement pour l’accrochage, la préparation de cartels et la structuration de projets d’exposition collective.'
+    },
+    {
+      id: 'comp-5',
+      memberId: 'dominique-paul',
+      domain: 'Recherche artistique & Rayonnement contemporain',
+      title: 'Mentorat sur les dossiers d’artistes en art contemporain, résidences internationales et centres d’artistes',
+      modality: 'Échange entre pairs',
+      details: 'Partage d’expérience sur la diffusion en centres d’artistes autogérés, musées et réseaux internationaux.'
+    },
+    {
+      id: 'comp-6',
+      memberId: 'thomas-hodgson',
+      domain: 'Direction musicale, Sonorisation & Régie',
+      title: 'Conception d’ambiances sonores pour expositions et conseil en régie technique de spectacle',
+      modality: 'Co-création / Tarif membre',
+      details: 'Création de trames sonores originales et préparation de fiches techniques (Technical Riders) pour la tournée.'
+    }
+  ],
+
+  // #14 : Radar des appels de dossiers, subventions, 1 % et résidences
   bourses: [
     {
       id: 'bourse-1',
+      category: 'Bourses CALQ / CAC',
       agency: 'CALQ — Conseil des arts et des lettres du Québec',
       program: 'Programme de partenariat territorial de la Montérégie',
+      amount: 'Jusqu’à 25 000 $ par projet',
       deadline: 'Automne / Hiver (annuel)',
-      targetDisciplines: 'Toutes disciplines artistiques (Artistes professionnels résidant en Montérégie)',
+      targetDisciplines: 'Toutes disciplines artistiques (Artistes professionnels et collectifs résidant en Montérégie)',
       url: 'https://www.calq.gouv.qc.ca'
     },
     {
       id: 'bourse-2',
+      category: 'Bourses CALQ / CAC',
       agency: 'CALQ — Conseil des arts et des lettres du Québec',
       program: 'Recherche et création / Exploration et déploiement numérique',
+      amount: 'Jusqu’à 35 000 $',
       deadline: 'En continu / dates fixes par volet',
       targetDisciplines: 'Arts visuels, arts numériques, arts vivants, musique, littérature',
       url: 'https://www.calq.gouv.qc.ca'
     },
     {
       id: 'bourse-3',
+      category: 'Bourses CALQ / CAC',
       agency: 'CAC — Conseil des arts du Canada',
       program: 'Explorer et créer (Du concept à la réalisation)',
+      amount: 'Jusqu’à 25 000 $ à 60 000 $',
       deadline: 'Pluriannuel',
-      targetDisciplines: 'Artistes professionnels et collectifs',
+      targetDisciplines: 'Artistes professionnels et collectifs artistiques',
       url: 'https://conseildesarts.ca'
+    },
+    {
+      id: 'bourse-4',
+      category: 'Art public (Politique du 1 %)',
+      agency: 'Ministère de la Culture et des Communications (MCC)',
+      program: 'Politique d’intégration des arts à l’architecture et à l’environnement (1 %)',
+      amount: 'Variable selon le budget de construction public',
+      deadline: 'Selon les appels régionaux (Montérégie)',
+      targetDisciplines: 'Arts visuels, sculpture, installation architecturale et arts numériques',
+      url: 'https://www.quebec.ca/culture/arts-visuels/integration-arts-architecture'
+    },
+    {
+      id: 'bourse-5',
+      category: 'Fonds municipaux & MRC',
+      agency: 'Ville de Saint-Jean-sur-Richelieu / MRC du Haut-Richelieu',
+      program: 'Soutien aux initiatives culturelles et projets de médiation',
+      amount: 'Variable selon l’entente de développement culturel',
+      deadline: 'Printemps & Automne',
+      targetDisciplines: 'Projets favorisant l’accès à la culture et le rayonnement régional',
+      url: 'https://sjsr.ca/'
+    }
+  ],
+
+  // #15 : Répertoire des lieux de diffusion partenaires
+  lieuxPartenaires: [
+    {
+      id: 'lieu-1',
+      name: 'Cathédrale Saint-Jean-l’Évangéliste — Dispositif Mur [à] mur',
+      city: 'Saint-Jean-sur-Richelieu (215, rue Longueuil)',
+      type: 'Lieu de création et diffusion immersive (La Cargaison)',
+      disciplines: 'Projections architecturales, musique, arts visuels, réalité virtuelle et patrimoine',
+      techSpecs: '14 projecteurs haute puissance, système sonore immersif, casques VR, architecture patrimoniale à grand volume.',
+      collaborations: 'Du concret vers l’immatériel (Roger Alexandre), Hommage à Cohen (Thomas Hodgson), L’Art et la nature, Noël Illuminé, De père en fille.',
+      website: 'https://www.lacargaison.org/'
+    },
+    {
+      id: 'lieu-2',
+      name: 'Centre Saint-Romuald',
+      city: 'Farnham (Montérégie)',
+      type: 'Lieu patrimonial & Diffusion multimédia hors-les-murs',
+      disciplines: 'Projections immersives, histoire, narration et arts vivants',
+      techSpecs: 'Architecture intérieure propice aux projections grand format et spectacles immersifs.',
+      collaborations: 'Farnham renaît de ses cendres (Création La Cargaison, narration Danny Gilmore).',
+      website: 'https://www.lacargaison.org/programmation/farnham-renait-de-ses-cendres/'
+    },
+    {
+      id: 'lieu-3',
+      name: 'Presbytère de L’Acadie',
+      city: 'Saint-Jean-sur-Richelieu (Secteur patrimonial L’Acadie)',
+      type: 'Site patrimonial & Espace d’exposition numérique',
+      disciplines: 'Installations historiques, arts visuels, mémoire et patrimoine vivant',
+      techSpecs: 'Salles d’exposition intimistes et dispositifs audiovisuels intégrés.',
+      collaborations: 'Entre histoire et innovation (Hortense Bove-Tugault, Napoléon Bourassa et Joseph Crevier).',
+      website: 'https://www.lacargaison.org/programmation/entre-histoire-et-innovation/'
+    },
+    {
+      id: 'lieu-4',
+      name: 'Bibliothèque Marie-Uguay',
+      city: 'Notre-Dame-de-l’Île-Perrot',
+      type: 'Lieu culturel municipal & Espace d’exposition',
+      disciplines: 'Installations multimédias, arts visuels, histoire et médiation culturelle',
+      techSpecs: 'Espace d’accueil public pouvant intégrer décors scénographiques et projections.',
+      collaborations: 'Installation ferroviaire virtuelle de La Cargaison (Françoise Dancause, Marjolaine Quintal, Jessyca Viens-Gaboriau).',
+      website: 'https://www.ndip.org/'
+    },
+    {
+      id: 'lieu-5',
+      name: 'Espace public — Ancienne usine de filtration',
+      city: 'Salaberry-de-Valleyfield',
+      type: 'Diffusion architecturale extérieure grand format',
+      disciplines: 'Projection mapping extérieur, musique et photographie nocturne',
+      techSpecs: 'Façade architecturale extérieure pour projections monumentales.',
+      collaborations: 'Chaleur et lumières (150e anniversaire de Salaberry-de-Valleyfield — Kim Valiquette, Françoise Dancause, Thomas Hodgson).',
+      website: 'https://www.lacargaison.org/creations/'
+    },
+    {
+      id: 'lieu-6',
+      name: 'Domaine du Ridge & Lieux d’exposition en Montérégie',
+      city: 'Saint-Armand / Brome-Missisquoi & Haut-Richelieu',
+      type: 'Expositions collectives & Galeries partenaires',
+      disciplines: 'Peinture, photographie, sculpture et arts visuels',
+      techSpecs: 'Espaces d’accrochage lumineux pour expositions collectives et vernissages.',
+      collaborations: 'Expositions collectives réunissant notamment les membres Evan Patruno et Andrew Jason (Shawn AJ Christie).',
+      website: 'https://www.facebook.com/evanpatruno.EP'
     }
   ],
 
@@ -505,7 +772,47 @@ const INITIAL_DATA = {
       scoreFeasibility: 18,
       status: 'Admissible (Seuils atteints)'
     }
-  ]
+  ],
+
+  // #17 : Suivi budgétaire et Répartition des fonds par projet du C.A.
+  budgetData: {
+    annualEnvelope: 145000,
+    fiscalYear: 'Exercice 2026–2027',
+    allocations: [
+      {
+        id: 'bud-1',
+        projectTitle: 'Du concret vers l’immatériel (Création & Diffusion en nef)',
+        category: 'Production & Cachets d’artistes',
+        beneficiary: 'Roger Alexandre, Philippe Corriveau, Jessyca Viens-Gaboriau',
+        amount: 32000,
+        status: 'Adopté / Engagé'
+      },
+      {
+        id: 'bud-2',
+        projectTitle: 'Hommage à Leonard Cohen & Programmation musicale',
+        category: 'Diffusion & Scénographie numérique',
+        beneficiary: 'Thomas Hodgson, Marianne Quintal-Émard & équipe',
+        amount: 18500,
+        status: 'Adopté / Engagé'
+      },
+      {
+        id: 'bud-3',
+        projectTitle: 'Maintenance du dispositif Mur [à] mur (14 projecteurs & parc VR)',
+        category: 'Infrastructures & Mutualisation (#11)',
+        beneficiary: 'Collectif des 99 membres',
+        amount: 24000,
+        status: 'Adopté / Engagé'
+      },
+      {
+        id: 'bud-4',
+        projectTitle: 'Enveloppe réservée aux nouveaux maillages interdisciplinaires (Grille 50/30/20)',
+        category: 'Réserve projets en évaluation',
+        beneficiary: 'Appels à projets internes des membres',
+        amount: 25000,
+        status: 'En réserve (Évaluation C.A.)'
+      }
+    ]
+  }
 };
 
 let state = loadState();
@@ -662,8 +969,22 @@ function handleRouteFromUrl(isInitialLoad) {
         '#/artistes'
       );
     }
+  } else if (root === 'projets' && sub) {
+    currentDetailId = sub;
+    renderProjetSubpage(sub);
+    activateViewDOM('projet-detail', 'maillage');
+    const c = (state.chantiers || []).find((x) => x.id === sub);
+    const p = (state.maillagePosts || []).find((x) => x.id === sub);
+    const labelTitle = c ? c.title : p ? p.title : 'Groupe de travail';
+    updateBreadcrumb(
+      [
+        { label: '03. Maillage & Groupes de travail', route: '#/maillage/chantiers' },
+        { label: labelTitle, route: `#/projets/${sub}` }
+      ],
+      `#/projets/${sub}`
+    );
   } else if (root === 'maillage') {
-    const validSubs = ['babillard', 'chantiers', 'equipements', 'bourses', 'calendrier'];
+    const validSubs = ['babillard', 'chantiers', 'equipements', 'competences', 'bourses', 'lieux', 'calendrier'];
     activeMaillageSubtab = validSubs.includes(sub) ? sub : 'babillard';
     saveState();
     document.querySelectorAll('#maillageSubnav .subnav-btn').forEach((b) => {
@@ -673,14 +994,16 @@ function handleRouteFromUrl(isInitialLoad) {
     activateViewDOM('maillage');
     const subLabels = {
       babillard: 'Babillard & Jumelage rapide',
-      chantiers: 'Chantiers & duos en cours',
-      equipements: "Prêt d'équipement & ateliers",
-      bourses: 'Bourses & appels de dossiers',
+      chantiers: 'Groupes de travail & Comités (#13)',
+      equipements: "Banque de mutualisation d'équipements (#11)",
+      competences: "Bourse de compétences croisées (#12)",
+      bourses: 'Radar des bourses & appels de dossiers (#14)',
+      lieux: 'Répertoire des lieux de diffusion partenaires (#15)',
       calendrier: 'Calendrier hors-les-murs (Public)'
     };
     updateBreadcrumb(
       [
-        { label: '03. Maillage & Calendrier', route: '#/maillage/babillard' },
+        { label: '03. Maillage & Vie du collectif', route: '#/maillage/babillard' },
         { label: subLabels[activeMaillageSubtab], route: `#/maillage/${activeMaillageSubtab}` }
       ],
       `#/maillage/${activeMaillageSubtab}`
@@ -1424,7 +1747,7 @@ function renderArtists() {
 }
 
 /* ==========================================================================
-   03. RENDU MAILLAGE (#11 Jumelage, #12 Intérêt, #14 Bourses, #15 Calendrier)
+   03. RENDU MAILLAGE (#11 Équipements, #12 Compétences, #13 Groupes de travail, #14 Radar bourses, #15 Lieux)
    ========================================================================== */
 function renderMaillage() {
   const container = document.getElementById('maillageContentArea');
@@ -1434,15 +1757,21 @@ function renderMaillage() {
     return;
   }
 
+  if (activeMaillageSubtab === 'lieux') {
+    renderLieuxPartenaires(container);
+    return;
+  }
+
   if (state.currentRole === 'public') {
     container.innerHTML = `
       <div class="member-gate-notice">
         <h2 style="font-family:var(--font-heading); font-weight:500; margin-bottom:0.75rem;">Espace interne réservé aux 99 membres</h2>
         <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1.5rem;">
-          Le babillard de maillage, l'outil de jumelage, les chantiers, le prêt d'équipement et la veille des bourses sont réservés aux membres de La Cargaison.
+          Le babillard de maillage, les groupes de travail (#13), la banque d'équipements (#11), la bourse de compétences (#12) et le radar des subventions (#14) sont réservés aux membres de La Cargaison.
         </p>
         <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
           <button type="button" class="btn" id="gateLoginMaillage">Activer la Vue Membre</button>
+          <button type="button" class="btn btn--outline" id="gateSeeLieux">Voir les Lieux partenaires (#15)</button>
           <button type="button" class="btn btn--outline" id="gateSeePublicCalendar">Voir le Calendrier public</button>
         </div>
       </div>
@@ -1451,6 +1780,9 @@ function renderMaillage() {
       state.currentRole = 'member';
       saveState();
       renderAll();
+    });
+    document.getElementById('gateSeeLieux').addEventListener('click', () => {
+      navigateToRoute('#/maillage/lieux');
     });
     document.getElementById('gateSeePublicCalendar').addEventListener('click', () => {
       navigateToRoute('#/maillage/calendrier');
@@ -1464,16 +1796,17 @@ function renderMaillage() {
     renderChantiers(container);
   } else if (activeMaillageSubtab === 'equipements') {
     renderEquipements(container);
+  } else if (activeMaillageSubtab === 'competences') {
+    renderCompetences(container);
   } else if (activeMaillageSubtab === 'bourses') {
     renderBourses(container);
   }
 }
 
-// #11 (Jumelage rapide) & #12 (Manifester son intérêt en 1 clic)
+// #11 (Jumelage rapide) & #13 (Accès sous-page Groupe de travail)
 function renderBabillard(container) {
   const me = getArtistById(state.currentMemberId);
 
-  // Résultats de l'outil de Jumelage rapide par besoin (#11)
   let jumelageResultsHtml = '';
   if (jumelageQuickDiscipline !== 'none') {
     const matches = state.artists.filter((a) => a.disciplineGroup === jumelageQuickDiscipline);
@@ -1519,7 +1852,7 @@ function renderBabillard(container) {
             const interestedChipsHtml =
               interestedIds.length > 0
                 ? `<div class="interested-avatars-row">
-                    <span style="font-size:0.74rem; color:var(--text-muted);">Membres intéressés (${interestedIds.length}) :</span>
+                    <span style="font-size:0.74rem; color:var(--text-muted);">Membres embarqués (${interestedIds.length}) :</span>
                     ${interestedIds
                       .map((id) => {
                         const m = getArtistById(id);
@@ -1557,17 +1890,22 @@ function renderBabillard(container) {
                 </div>
                 <span class="maillage-post__type">${post.category}</span>
               </div>
-              <h3 class="maillage-post__title">${post.title}</h3>
+              <h3 class="maillage-post__title">
+                <a href="#/projets/${post.id}" style="color:var(--text-primary); text-decoration:none;">${post.title}</a>
+              </h3>
               <p class="maillage-post__body">${post.body}</p>
               ${interestedChipsHtml}
               <div class="maillage-post__meta" style="margin-top:0.85rem;">
                 <span>Discipline recherchée : <strong>${post.soughtDiscipline}</strong></span>
                 <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
                   <button type="button" class="btn ${isMeInterested ? '' : 'btn--outline'} btn--small" data-toggle-interest="${post.id}">
-                    ${isMeInterested ? 'Intérêt manifesté ✓' : 'Je suis intéressé(e) par ce maillage'}
+                    ${isMeInterested ? 'Embarqué(e) ✓' : 'Je souhaite embarquer'}
                   </button>
+                  <a href="#/projets/${post.id}" class="btn btn--outline btn--small">
+                    Espace Groupe de travail (#13) &rarr;
+                  </a>
                   <button type="button" class="btn btn--outline btn--small" data-private-msg="${author.id}" data-private-subj="${post.title}">
-                    Écrire en privé à ${author.name}
+                    Écrire en privé
                   </button>
                 </div>
               </div>
@@ -1584,11 +1922,10 @@ function renderBabillard(container) {
           .join('');
 
   container.innerHTML = `
-    <!-- #11 : Outil de Jumelage rapide par besoin -->
     <div class="panel-card" style="margin-bottom:1.75rem;">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
         <div>
-          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">Outil de jumelage interdisciplinaire (#11)</span>
+          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">Outil de jumelage interdisciplinaire</span>
           <h3 style="font-family:var(--font-heading); font-size:1.02rem; font-weight:500;">Trouver rapidement un collaborateur parmi les 99 membres</h3>
         </div>
         <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
@@ -1685,7 +2022,6 @@ function renderBabillard(container) {
     el.addEventListener('click', () => openArtistModal(el.dataset.openArtist));
   });
 
-  // #12 : Manifester son intérêt en 1 clic
   container.querySelectorAll('[data-toggle-interest]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const post = state.maillagePosts.find((p) => p.id === btn.dataset.toggleInterest);
@@ -1745,10 +2081,13 @@ function renderBabillard(container) {
   });
 }
 
+// #13 : Espace « Groupes de travail / Comités artistiques » avec lien vers sous-page #/projets/:id
 function renderChantiers(container) {
   const cardsHtml = state.chantiers
     .map((c) => {
       const memberProfiles = c.members.map((id) => getArtistById(id));
+      const milestones = c.milestones || [];
+      const doneCount = milestones.filter((m) => m.done).length;
       const avatarsHtml = memberProfiles
         .map(
           (m) => `
@@ -1764,16 +2103,22 @@ function renderChantiers(container) {
         <article class="editorial-card">
           <div>
             <div class="editorial-card__kicker">${c.disciplines}</div>
-            <h3 class="editorial-card__title">${c.title}</h3>
+            <h3 class="editorial-card__title">
+              <a href="#/projets/${c.id}" style="color:var(--text-primary); text-decoration:none;">${c.title}</a>
+            </h3>
             <div style="display:flex; flex-wrap:wrap; gap:0.85rem; margin:0.85rem 0 1rem; padding:0.75rem; background:var(--bg-page); border:1px solid var(--border-color);">
               ${avatarsHtml}
             </div>
             <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.4rem;">
-              <strong>Réalisation :</strong> ${c.stage}
+              <strong>État :</strong> ${c.stage}
             </p>
-            <p style="font-size:0.82rem; color:var(--text-muted);">
-              <strong>Cadre :</strong> ${c.target}
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.85rem;">
+              <strong>Objectif :</strong> ${c.target} &bull; <strong>Échéancier :</strong> ${doneCount}/${milestones.length} jalons complétés
             </p>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.75rem; border-top:1px solid var(--bg-subtle);">
+            <span style="font-size:0.76rem; color:var(--text-muted);">${(c.discussions || []).length} note(s) de comité</span>
+            <a href="#/projets/${c.id}" class="btn btn--small">Ouvrir le Groupe de travail (#13) &rarr;</a>
           </div>
         </article>
       `;
@@ -1784,14 +2129,14 @@ function renderChantiers(container) {
     <div class="maillage-layout">
       <div class="cards-2col">${cardsHtml}</div>
       <aside class="panel-card">
-        <h3 class="panel-card__title">Inscrire un nouveau chantier / duo</h3>
+        <h3 class="panel-card__title">Créer un Groupe de travail / Comité (#13)</h3>
         <form id="newChantierForm">
           <div class="form-group">
-            <label class="form-label">Titre du chantier collaboratif</label>
-            <input type="text" name="title" class="form-input" required />
+            <label class="form-label">Titre du groupe de travail ou projet</label>
+            <input type="text" name="title" class="form-input" placeholder="Ex. Comité exposition collective Printemps 2027" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Membre partenaire du collectif</label>
+            <label class="form-label">Premier membre co-fondateur du groupe</label>
             <select name="partnerId" class="form-select" required>
               ${state.artists
                 .filter((a) => a.id !== state.currentMemberId)
@@ -1801,17 +2146,17 @@ function renderChantiers(container) {
           </div>
           <div class="form-group">
             <label class="form-label">Disciplines croisées</label>
-            <input type="text" name="disciplines" class="form-input" required />
+            <input type="text" name="disciplines" class="form-input" placeholder="Ex. Peinture, Son & Scénographie" required />
           </div>
           <div class="form-group">
             <label class="form-label">État d'avancement</label>
-            <input type="text" name="stage" class="form-input" required />
+            <input type="text" name="stage" class="form-input" value="En idéation et structuration d'équipe" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Objectif / Diffusion visée</label>
-            <input type="text" name="target" class="form-input" required />
+            <label class="form-label">Objectif / Diffusion ou bourse visée</label>
+            <input type="text" name="target" class="form-input" placeholder="Ex. Dépôt CALQ Montérégie / Nef La Cargaison" required />
           </div>
-          <button type="submit" class="btn" style="width:100%;">Ajouter aux chantiers</button>
+          <button type="submit" class="btn" style="width:100%;">Créer &amp; ouvrir la sous-page du groupe</button>
         </form>
       </aside>
     </div>
@@ -1824,36 +2169,63 @@ function renderChantiers(container) {
   document.getElementById('newChantierForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);
+    const me = getArtistById(state.currentMemberId);
+    const newId = 'chantier-' + Date.now();
     state.chantiers.unshift({
-      id: 'chantier-' + Date.now(),
+      id: newId,
       title: fd.get('title'),
       members: [state.currentMemberId, fd.get('partnerId')],
       disciplines: fd.get('disciplines'),
       stage: fd.get('stage'),
-      target: fd.get('target')
+      target: fd.get('target'),
+      milestones: [
+        { id: 'm-' + Date.now() + '-1', title: 'Rencontre initiale et répartition des rôles artistiques', due: 'Semaine 1', owner: me.name, done: false },
+        { id: 'm-' + Date.now() + '-2', title: 'Élaboration du budget et fiche technique', due: 'Mois 1', owner: 'Équipe du projet', done: false }
+      ],
+      discussions: [
+        { authorName: me.name, date: 'À l’instant', text: 'Groupe de travail créé. Bienvenue dans l’espace de coordination du projet.' }
+      ]
     });
     saveState();
-    renderChantiers(container);
+    navigateToRoute(`#/projets/${newId}`);
   });
 }
 
+// #11 : Banque de mutualisation d'équipements et d'espaces entre membres
+let activeEquipCategoryFilter = 'all';
 function renderEquipements(container) {
-  const eqHtml = state.equipements
+  const list = (state.equipements || []).filter(
+    (eq) => activeEquipCategoryFilter === 'all' || eq.type === activeEquipCategoryFilter
+  );
+
+  const eqHtml = list
     .map((eq) => {
       const owner = getArtistById(eq.ownerId);
       return `
         <article class="editorial-card">
           <div>
-            <div class="editorial-card__kicker">${eq.type}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+              <span class="editorial-card__kicker" style="margin-bottom:0;">${eq.type}</span>
+              <span style="font-size:0.7rem; padding:0.12rem 0.5rem; border:1px solid var(--border-color); background:var(--bg-page);">
+                ${eq.availabilityBadge || 'Mutualisation membre'}
+              </span>
+            </div>
             <h3 class="editorial-card__title">${eq.title}</h3>
-            <p style="font-size:0.86rem; color:var(--text-secondary); margin:0.5rem 0 1rem;">
-              ${eq.conditions}
+            ${
+              eq.specs
+                ? `<p style="font-size:0.82rem; color:var(--text-primary); margin:0.4rem 0; padding:0.5rem 0.65rem; background:var(--bg-page); border:1px solid var(--border-color);">
+                    <strong>Spécifications :</strong> ${eq.specs}
+                  </p>`
+                : ''
+            }
+            <p style="font-size:0.84rem; color:var(--text-secondary); margin:0.5rem 0 1rem;">
+              <strong>Modalités :</strong> ${eq.conditions}
             </p>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.75rem; border-top:1px solid var(--bg-subtle); font-size:0.8rem;">
-            <span>Référent : <strong>${owner.name}</strong></span>
-            <button type="button" class="btn btn--outline btn--small" data-private-msg="${owner.id}" data-private-subj="Ressource : ${eq.title}">
-              Écrire
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding-top:0.75rem; border-top:1px solid var(--bg-subtle); font-size:0.8rem;">
+            <span>Référent : <a href="#/artistes/${owner.id}" style="color:var(--text-primary); font-weight:600; text-decoration:underline;">${owner.name}</a></span>
+            <button type="button" class="btn btn--small" data-private-msg="${owner.id}" data-private-subj="Réservation / Emprunt (#11) : ${eq.title}">
+              Réserver / Emprunter
             </button>
           </div>
         </article>
@@ -1862,10 +2234,20 @@ function renderEquipements(container) {
     .join('');
 
   container.innerHTML = `
+    <div class="filter-bar" style="margin-bottom:1.5rem;">
+      <div class="filter-group">
+        <button type="button" class="filter-btn ${activeEquipCategoryFilter === 'all' ? 'active' : ''}" data-eq-cat="all">Tous les équipements &amp; espaces (${state.equipements.length})</button>
+        <button type="button" class="filter-btn ${activeEquipCategoryFilter === 'Espace d’atelier / Répétition' ? 'active' : ''}" data-eq-cat="Espace d’atelier / Répétition">Espaces &amp; Nef</button>
+        <button type="button" class="filter-btn ${activeEquipCategoryFilter === 'Équipement numérique / Projection' ? 'active' : ''}" data-eq-cat="Équipement numérique / Projection">Projection &amp; Numérique</button>
+        <button type="button" class="filter-btn ${activeEquipCategoryFilter === 'Audio / Enregistrement' ? 'active' : ''}" data-eq-cat="Audio / Enregistrement">Audio &amp; Sonorisation</button>
+        <button type="button" class="filter-btn ${activeEquipCategoryFilter === 'Outillage / Arts visuels & Scénographie' ? 'active' : ''}" data-eq-cat="Outillage / Arts visuels & Scénographie">Outillage &amp; Photo</button>
+      </div>
+    </div>
+
     <div class="maillage-layout">
-      <div class="cards-2col">${eqHtml}</div>
+      <div class="cards-2col">${eqHtml || '<p style="color:var(--text-muted);">Aucun équipement dans cette catégorie.</p>'}</div>
       <aside class="panel-card">
-        <h3 class="panel-card__title">Proposer un équipement ou un espace</h3>
+        <h3 class="panel-card__title">Mutualiser un équipement ou un atelier (#11)</h3>
         <form id="newEqForm">
           <div class="form-group">
             <label class="form-label">Catégorie</label>
@@ -1878,17 +2260,37 @@ function renderEquipements(container) {
           </div>
           <div class="form-group">
             <label class="form-label">Matériel ou espace proposé</label>
-            <input type="text" name="title" class="form-input" required />
+            <input type="text" name="title" class="form-input" placeholder="Ex. Projecteur courte focale / Atelier..." required />
           </div>
           <div class="form-group">
-            <label class="form-label">Modalités entre membres</label>
+            <label class="form-label">Formule de mutualisation</label>
+            <select name="availabilityBadge" class="form-select" required>
+              <option value="Prêt solidaire entre membres">Prêt solidaire entre membres</option>
+              <option value="Disponible au prêt / Tarif membre">Disponible au prêt / Tarif membre</option>
+              <option value="Échange de services / Co-production">Échange de services / Co-production</option>
+              <option value="Sur réservation C.A.">Sur réservation C.A.</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Spécifications techniques</label>
+            <input type="text" name="specs" class="form-input" placeholder="Dimensions, puissance, compatibilité..." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Modalités d'emprunt entre membres</label>
             <textarea name="conditions" class="form-textarea" required></textarea>
           </div>
-          <button type="submit" class="btn" style="width:100%;">Ajouter au répertoire</button>
+          <button type="submit" class="btn" style="width:100%;">Ajouter à la banque de mutualisation</button>
         </form>
       </aside>
     </div>
   `;
+
+  container.querySelectorAll('[data-eq-cat]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeEquipCategoryFilter = btn.dataset.eqCat;
+      renderEquipements(container);
+    });
+  });
 
   container.querySelectorAll('[data-private-msg]').forEach((btn) => {
     btn.addEventListener('click', () => openPrivateMsgModal(btn.dataset.privateMsg, btn.dataset.privateSubj));
@@ -1902,6 +2304,8 @@ function renderEquipements(container) {
       ownerId: state.currentMemberId,
       type: fd.get('type'),
       title: fd.get('title'),
+      availabilityBadge: fd.get('availabilityBadge'),
+      specs: fd.get('specs'),
       conditions: fd.get('conditions')
     });
     saveState();
@@ -1909,27 +2313,168 @@ function renderEquipements(container) {
   });
 }
 
-// #14 : Tableau des bourses, appels de dossiers et résidences à venir
+// #12 : Répertoire des compétences croisées (« Bourse d'entraide professionnelle »)
+let activeCompDomainFilter = 'all';
+function renderCompetences(container) {
+  const competences = state.competences || [];
+  const filtered = competences.filter((c) => activeCompDomainFilter === 'all' || c.domain === activeCompDomainFilter);
+
+  const compHtml = filtered
+    .map((c) => {
+      const member = getArtistById(c.memberId);
+      return `
+        <article class="editorial-card">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; margin-bottom:0.45rem;">
+              <span class="editorial-card__kicker" style="margin-bottom:0;">${c.domain}</span>
+              <span style="font-size:0.7rem; padding:0.12rem 0.5rem; border:1px solid var(--border-color); background:var(--bg-page);">
+                ${c.modality}
+              </span>
+            </div>
+            <h3 class="editorial-card__title">${c.title}</h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary); margin:0.5rem 0 1rem;">
+              ${c.details}
+            </p>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; padding-top:0.75rem; border-top:1px solid var(--bg-subtle);">
+            <a href="#/artistes/${member.id}" style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:var(--text-primary);">
+              <img src="${member.photo}" alt="${member.name}" style="width:32px; height:32px; object-fit:cover; filter:grayscale(100%); border:1px solid var(--border-color);" />
+              <div style="font-size:0.78rem;">
+                <strong>${member.name}</strong>
+                <div style="color:var(--text-muted); font-size:0.7rem;">${member.roleTitle}</div>
+              </div>
+            </a>
+            <button type="button" class="btn btn--small" data-private-msg="${member.id}" data-private-subj="Compétence croisée (#12) : ${c.domain}">
+              Solliciter ce membre
+            </button>
+          </div>
+        </article>
+      `;
+    })
+    .join('');
+
+  container.innerHTML = `
+    <div class="filter-bar" style="margin-bottom:1.5rem;">
+      <div class="filter-group">
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'all' ? 'active' : ''}" data-comp-dom="all">Toutes les compétences (${competences.length})</button>
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'Photographie d’œuvres & Captation scénique' ? 'active' : ''}" data-comp-dom="Photographie d’œuvres & Captation scénique">Photo d'œuvres &amp; Captation</button>
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'Intégration multimédia, Mapping & 3D' ? 'active' : ''}" data-comp-dom="Intégration multimédia, Mapping & 3D">Mapping, 3D &amp; Numérique</button>
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'Rédaction, Dramaturgie & Dossiers de subvention' ? 'active' : ''}" data-comp-dom="Rédaction, Dramaturgie & Dossiers de subvention">Dossiers CALQ/CAC &amp; Rédaction</button>
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'Direction musicale, Sonorisation & Régie' ? 'active' : ''}" data-comp-dom="Direction musicale, Sonorisation & Régie">Sonorisation &amp; Régie</button>
+        <button type="button" class="filter-btn ${activeCompDomainFilter === 'Commissariat, Arts visuels & Gouvernance' ? 'active' : ''}" data-comp-dom="Commissariat, Arts visuels & Gouvernance">Commissariat &amp; Accrochage</button>
+      </div>
+    </div>
+
+    <div class="maillage-layout">
+      <div class="cards-2col">${compHtml || '<p style="color:var(--text-muted);">Aucune offre dans ce domaine.</p>'}</div>
+      <aside class="panel-card">
+        <h3 class="panel-card__title">Offrir une compétence aux membres (#12)</h3>
+        <form id="newCompetenceForm">
+          <div class="form-group">
+            <label class="form-label">Domaine d'expertise</label>
+            <select name="domain" class="form-select" required>
+              <option value="Photographie d’œuvres & Captation scénique">Photographie d'œuvres &amp; Captation scénique</option>
+              <option value="Intégration multimédia, Mapping & 3D">Intégration multimédia, Mapping &amp; 3D</option>
+              <option value="Rédaction, Dramaturgie & Dossiers de subvention">Rédaction, Dramaturgie &amp; Dossiers CALQ/CAC</option>
+              <option value="Direction musicale, Sonorisation & Régie">Direction musicale, Sonorisation &amp; Régie</option>
+              <option value="Commissariat, Arts visuels & Gouvernance">Commissariat, Accrochage &amp; Muséologie</option>
+              <option value="Recherche artistique & Rayonnement contemporain">Recherche artistique &amp; Rayonnement</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service ou savoir-faire offert</label>
+            <input type="text" name="title" class="form-input" placeholder="Ex. Montage vidéo de bande-annonce / Révision..." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Modalité d'entraide</label>
+            <select name="modality" class="form-select" required>
+              <option value="Échange de services entre membres">Échange de services entre membres</option>
+              <option value="Tarif solidaire membre">Tarif solidaire membre</option>
+              <option value="Mentorat / Entraide bénévole">Mentorat / Entraide bénévole</option>
+              <option value="Co-création sur projet">Co-création sur projet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Précisions</label>
+            <textarea name="details" class="form-textarea" required></textarea>
+          </div>
+          <button type="submit" class="btn" style="width:100%;">Publier dans la bourse de compétences</button>
+        </form>
+      </aside>
+    </div>
+  `;
+
+  container.querySelectorAll('[data-comp-dom]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCompDomainFilter = btn.dataset.compDom;
+      renderCompetences(container);
+    });
+  });
+
+  container.querySelectorAll('[data-private-msg]').forEach((btn) => {
+    btn.addEventListener('click', () => openPrivateMsgModal(btn.dataset.privateMsg, btn.dataset.privateSubj));
+  });
+
+  document.getElementById('newCompetenceForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    state.competences = state.competences || [];
+    state.competences.unshift({
+      id: 'comp-' + Date.now(),
+      memberId: state.currentMemberId,
+      domain: fd.get('domain'),
+      title: fd.get('title'),
+      modality: fd.get('modality'),
+      details: fd.get('details')
+    });
+    saveState();
+    renderCompetences(container);
+  });
+}
+
+// #14 : Radar des appels de dossiers, subventions, 1 % et résidences avec création d'équipe en 1 clic
+let activeBourseCatFilter = 'all';
 function renderBourses(container) {
-  const boursesHtml = (state.bourses || [])
+  const bourses = (state.bourses || []).filter(
+    (b) => activeBourseCatFilter === 'all' || (b.category || 'Bourses CALQ / CAC') === activeBourseCatFilter
+  );
+
+  const boursesHtml = bourses
     .map(
       (b) => `
       <article class="editorial-card">
         <div>
-          <div class="editorial-card__kicker">${b.agency}</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+            <span class="editorial-card__kicker" style="margin-bottom:0;">${b.agency}</span>
+            <span style="font-size:0.7rem; padding:0.12rem 0.5rem; border:1px solid var(--border-color); background:var(--bg-page);">
+              ${b.category || 'Subvention'}
+            </span>
+          </div>
           <h3 class="editorial-card__title">${b.program}</h3>
-          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0.4rem 0;">
+          ${
+            b.amount
+              ? `<p style="font-size:0.82rem; color:var(--text-primary); margin:0.35rem 0;">
+                  <strong>Soutien financier :</strong> ${b.amount}
+                </p>`
+              : ''
+          }
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0.35rem 0;">
             <strong>Disciplines :</strong> ${b.targetDisciplines}
           </p>
           <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">
             <strong>Échéance :</strong> ${b.deadline}
           </p>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; padding-top:0.75rem; border-top:1px solid var(--bg-subtle);">
-          <a href="${b.url}" target="_blank" rel="noopener" class="btn btn--outline btn--small">Site officiel &nearr;</a>
-          <button type="button" class="btn btn--small" data-request-support-for="${b.agency} — ${b.program}">
-            Demander une lettre d'appui au C.A.
-          </button>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:0.45rem; flex-wrap:wrap; padding-top:0.75rem; border-top:1px solid var(--bg-subtle);">
+          <a href="${b.url}" target="_blank" rel="noopener" class="btn btn--outline btn--small">Appel officiel &nearr;</a>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn--outline btn--small" data-create-grant-team="${b.id}">
+              Créer une équipe de réponse (#14)
+            </button>
+            <button type="button" class="btn btn--small" data-request-support-for="${b.agency} — ${b.program}">
+              Lettre d'appui C.A.
+            </button>
+          </div>
         </div>
       </article>
     `
@@ -1937,18 +2482,41 @@ function renderBourses(container) {
     .join('');
 
   container.innerHTML = `
+    <div class="filter-bar" style="margin-bottom:1.5rem;">
+      <div class="filter-group">
+        <button type="button" class="filter-btn ${activeBourseCatFilter === 'all' ? 'active' : ''}" data-bcat="all">Tous les appels (${(state.bourses || []).length})</button>
+        <button type="button" class="filter-btn ${activeBourseCatFilter === 'Bourses CALQ / CAC' ? 'active' : ''}" data-bcat="Bourses CALQ / CAC">Bourses CALQ &amp; CAC</button>
+        <button type="button" class="filter-btn ${activeBourseCatFilter === 'Art public (Politique du 1 %)' ? 'active' : ''}" data-bcat="Art public (Politique du 1 %)">Art public (1 %)</button>
+        <button type="button" class="filter-btn ${activeBourseCatFilter === 'Fonds municipaux & MRC' ? 'active' : ''}" data-bcat="Fonds municipaux & MRC">Fonds municipaux &amp; MRC</button>
+        <button type="button" class="filter-btn ${activeBourseCatFilter === 'Résidences & Galeries' ? 'active' : ''}" data-bcat="Résidences & Galeries">Résidences &amp; Galeries</button>
+      </div>
+    </div>
+
     <div class="maillage-layout">
-      <div class="cards-2col">${boursesHtml}</div>
+      <div class="cards-2col">${boursesHtml || '<p style="color:var(--text-muted);">Aucun appel dans ce volet.</p>'}</div>
       <aside class="panel-card">
-        <h3 class="panel-card__title">Partager un appel de dossier ou une bourse</h3>
+        <h3 class="panel-card__title">Inscrire un appel au Radar (#14)</h3>
         <form id="newBourseForm">
           <div class="form-group">
+            <label class="form-label">Volet</label>
+            <select name="category" class="form-select" required>
+              <option value="Bourses CALQ / CAC">Bourses CALQ / CAC</option>
+              <option value="Art public (Politique du 1 %)">Art public (Politique du 1 %)</option>
+              <option value="Fonds municipaux & MRC">Fonds municipaux &amp; MRC</option>
+              <option value="Résidences & Galeries">Résidences &amp; Galeries</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label class="form-label">Organisme / Lieu</label>
-            <input type="text" name="agency" class="form-input" placeholder="Ex. CALQ, Centre d'exposition..." required />
+            <input type="text" name="agency" class="form-input" placeholder="Ex. CALQ, Ville, Centre d'artistes..." required />
           </div>
           <div class="form-group">
             <label class="form-label">Titre du programme ou de l'appel</label>
             <input type="text" name="program" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Montant / Soutien offert</label>
+            <input type="text" name="amount" class="form-input" placeholder="Ex. Jusqu'à 25 000 $ / Cachet CARFAC" required />
           </div>
           <div class="form-group">
             <label class="form-label">Date limite</label>
@@ -1959,14 +2527,21 @@ function renderBourses(container) {
             <input type="text" name="targetDisciplines" class="form-input" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Lien web</label>
+            <label class="form-label">Lien officiel</label>
             <input type="url" name="url" class="form-input" placeholder="https://..." required />
           </div>
-          <button type="submit" class="btn" style="width:100%;">Publier l'appel</button>
+          <button type="submit" class="btn" style="width:100%;">Publier au radar culturel</button>
         </form>
       </aside>
     </div>
   `;
+
+  container.querySelectorAll('[data-bcat]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeBourseCatFilter = btn.dataset.bcat;
+      renderBourses(container);
+    });
+  });
 
   container.querySelectorAll('[data-request-support-for]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -1976,14 +2551,49 @@ function renderBourses(container) {
     });
   });
 
+  // #14 + #13 : Créer en 1 clic un Groupe de travail dédié pour répondre à cet appel de dossier
+  container.querySelectorAll('[data-create-grant-team]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const b = (state.bourses || []).find((x) => x.id === btn.dataset.createGrantTeam);
+      if (!b) return;
+      const me = getArtistById(state.currentMemberId);
+      const newId = 'chantier-grant-' + Date.now();
+      state.chantiers.unshift({
+        id: newId,
+        title: `Comité de dépôt : ${b.program} (${b.agency})`,
+        members: [me.id],
+        disciplines: b.targetDisciplines,
+        stage: `Préparation du dossier — Échéance : ${b.deadline}`,
+        target: `${b.agency} (${b.amount || 'Subvention'})`,
+        milestones: [
+          { id: 'mg-1-' + Date.now(), title: 'Définir le concept artistique et réunir les co-créateurs membres', due: 'Étape 1', owner: me.name, done: false },
+          { id: 'mg-2-' + Date.now(), title: 'Rédiger l’argumentaire (Mérite 50 %, Impact 30 %, Faisabilité 20 %)', due: 'Étape 2', owner: 'Équipe du projet', done: false },
+          { id: 'mg-3-' + Date.now(), title: 'Demander la lettre d’appui officielle au C.A. de La Cargaison', due: 'Étape 3', owner: me.name, done: false },
+          { id: 'mg-4-' + Date.now(), title: `Dépôt final auprès de : ${b.agency}`, due: b.deadline, owner: me.name, done: false }
+        ],
+        discussions: [
+          {
+            authorName: me.name,
+            date: 'À l’instant',
+            text: `Groupe de travail créé à partir du Radar des bourses (#14) pour répondre à l’appel « ${b.program} » (${b.url}).`
+          }
+        ]
+      });
+      saveState();
+      navigateToRoute(`#/projets/${newId}`);
+    });
+  });
+
   document.getElementById('newBourseForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);
     state.bourses = state.bourses || [];
     state.bourses.unshift({
       id: 'bourse-' + Date.now(),
+      category: fd.get('category'),
       agency: fd.get('agency'),
       program: fd.get('program'),
+      amount: fd.get('amount'),
       deadline: fd.get('deadline'),
       targetDisciplines: fd.get('targetDisciplines'),
       url: fd.get('url')
@@ -1991,6 +2601,143 @@ function renderBourses(container) {
     saveState();
     renderBourses(container);
   });
+}
+
+// #15 : Répertoire des lieux de diffusion partenaires
+function renderLieuxPartenaires(container) {
+  const lieux = state.lieuxPartenaires || [];
+  const cardsHtml = lieux
+    .map(
+      (l) => `
+      <article class="editorial-card">
+        <div>
+          <div class="editorial-card__kicker">${l.city} &bull; ${l.type}</div>
+          <h3 class="editorial-card__title">${l.name}</h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0.4rem 0;">
+            <strong>Disciplines accueillies :</strong> ${l.disciplines}
+          </p>
+          <p style="font-size:0.82rem; color:var(--text-primary); margin:0.45rem 0; padding:0.55rem 0.7rem; background:var(--bg-page); border:1px solid var(--border-color);">
+            <strong>Caractéristiques techniques :</strong> ${l.techSpecs}
+          </p>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">
+            <strong>Collaborations &amp; œuvres de La Cargaison diffusées :</strong> ${l.collaborations}
+          </p>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:0.75rem; border-top:1px solid var(--bg-subtle);">
+          <a href="${l.website}" target="_blank" rel="noopener" class="btn btn--outline btn--small">Site du lieu &nearr;</a>
+          <button type="button" class="btn btn--small" data-create-venue-project="${l.id}">
+            Proposer un projet pour ce lieu
+          </button>
+        </div>
+      </article>
+    `
+    )
+    .join('');
+
+  const addLieuSidebar =
+    state.currentRole === 'public'
+      ? `
+      <aside class="panel-card">
+        <h3 class="panel-card__title">Réseau de diffusion régional (#15)</h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary);">
+          Ce répertoire recense la nef principale de La Cargaison (Cathédrale Saint-Jean-l'Évangéliste / Mur [à] mur) ainsi que les lieux culturels, patrimoniaux et municipaux partenaires où rayonnent les 99 membres.
+        </p>
+      </aside>
+    `
+      : `
+      <aside class="panel-card">
+        <h3 class="panel-card__title">Ajouter un lieu de diffusion partenaire (#15)</h3>
+        <form id="newLieuForm">
+          <div class="form-group">
+            <label class="form-label">Nom du lieu culturel / Galerie / Salle</label>
+            <input type="text" name="name" class="form-input" placeholder="Ex. Maison de la culture..." required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ville / MRC</label>
+            <input type="text" name="city" class="form-input" placeholder="Ex. Saint-Jean-sur-Richelieu / Longueuil" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type de lieu</label>
+            <input type="text" name="type" class="form-input" placeholder="Ex. Centre d'exposition / Salle de spectacle" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Disciplines accueillies</label>
+            <input type="text" name="disciplines" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Équipements &amp; conditions techniques</label>
+            <input type="text" name="techSpecs" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Historique avec les membres de La Cargaison</label>
+            <textarea name="collaborations" class="form-textarea" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Site web officiel</label>
+            <input type="url" name="website" class="form-input" placeholder="https://..." required />
+          </div>
+          <button type="submit" class="btn" style="width:100%;">Ajouter au répertoire des lieux</button>
+        </form>
+      </aside>
+    `;
+
+  container.innerHTML = `
+    <div class="maillage-layout">
+      <div class="cards-2col">${cardsHtml}</div>
+      ${addLieuSidebar}
+    </div>
+  `;
+
+  container.querySelectorAll('[data-create-venue-project]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (state.currentRole === 'public') {
+        state.currentRole = 'member';
+      }
+      const lieu = (state.lieuxPartenaires || []).find((x) => x.id === btn.dataset.createVenueProject);
+      if (!lieu) return;
+      const me = getArtistById(state.currentMemberId);
+      const newId = 'chantier-lieu-' + Date.now();
+      state.chantiers.unshift({
+        id: newId,
+        title: `Projet de diffusion : ${lieu.name} (${lieu.city})`,
+        members: [me.id],
+        disciplines: lieu.disciplines,
+        stage: 'En conception pour proposition au diffuseur',
+        target: `${lieu.name} — ${lieu.city}`,
+        milestones: [
+          { id: 'ml-1-' + Date.now(), title: `Vérifier l'adéquation avec la fiche technique du lieu (${lieu.techSpecs})`, due: 'Étape 1', owner: me.name, done: false },
+          { id: 'ml-2-' + Date.now(), title: 'Réunir les œuvres et co-créateurs membres de La Cargaison', due: 'Étape 2', owner: me.name, done: false }
+        ],
+        discussions: [
+          { authorName: me.name, date: 'À l’instant', text: `Groupe de travail initié pour proposer un projet au lieu partenaire : ${lieu.name}.` }
+        ]
+      });
+      saveState();
+      renderAll();
+      navigateToRoute(`#/projets/${newId}`);
+    });
+  });
+
+  const newLieuForm = document.getElementById('newLieuForm');
+  if (newLieuForm) {
+    newLieuForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      state.lieuxPartenaires = state.lieuxPartenaires || [];
+      state.lieuxPartenaires.unshift({
+        id: 'lieu-' + Date.now(),
+        name: fd.get('name'),
+        city: fd.get('city'),
+        type: fd.get('type'),
+        disciplines: fd.get('disciplines'),
+        techSpecs: fd.get('techSpecs'),
+        collaborations: fd.get('collaborations'),
+        website: fd.get('website')
+      });
+      saveState();
+      renderLieuxPartenaires(container);
+    });
+  }
 }
 
 function renderCalendrierHorsLesMurs(container) {
@@ -2306,7 +3053,34 @@ function renderAtelierPortfolio(container, me) {
             <textarea name="description" class="form-textarea" required></textarea>
           </div>
 
-          <button type="submit" class="btn">Publier dans la galerie</button>
+          <!-- #10 : Gestionnaire de fiche technique (« Technical Rider » & Conditions d'exposition) -->
+          <div style="padding:1rem; background:var(--bg-page); border:1px solid var(--border-color); margin-bottom:1.15rem;">
+            <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin-bottom:0.65rem;">
+              Fiche technique (« Technical Rider » &amp; Conditions de diffusion — Idée #10)
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Espace requis / Accrochage</label>
+                <input type="text" name="techSpace" class="form-input" value="Cimaises de galerie ou espace scénique adapté" style="background:var(--bg-surface);" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Éclairage, son &amp; équipement</label>
+                <input type="text" name="techLighting" class="form-input" value="Éclairage directionnel 3000K / Besoins standards" style="background:var(--bg-surface);" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Durée, montage &amp; démontage</label>
+                <input type="text" name="techSetup" class="form-input" value="Montage : demi-journée" style="background:var(--bg-surface);" />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">Transport &amp; assurance</label>
+                <input type="text" name="techInsurance" class="form-input" value="Assurance exposition clou à clou par le diffuseur" style="background:var(--bg-surface);" />
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Publier dans la galerie (avec fiche technique)</button>
         </form>
       </div>
     </div>
@@ -2402,7 +3176,13 @@ function renderAtelierPortfolio(container, me) {
       sourceUrl: link1,
       images,
       embedUrl: '',
-      description: fd.get('description')
+      description: fd.get('description'),
+      techRider: {
+        spaceRequired: fd.get('techSpace') || 'Cimaises ou espace scénique standard',
+        lightingAudio: fd.get('techLighting') || 'Éclairage de galerie standard',
+        setupDuration: fd.get('techSetup') || 'Montage : demi-journée',
+        insuranceTransport: fd.get('techInsurance') || 'Assurance par le diffuseur'
+      }
     });
     saveState();
     renderAll();
@@ -2606,10 +3386,54 @@ function renderAtelierDepot(container, me) {
 }
 
 /* ==========================================================================
-   05. RENDU GOUVERNANCE C.A. (#16 Générateur de Lettre d'appui officielle & #15 Adhésions)
+   05. RENDU GOUVERNANCE C.A. (#16 Ordre du jour & Convocation, #17 Suivi budgétaire, Lettres & Adhésions)
    ========================================================================== */
 function renderCaAdmin() {
   const container = document.getElementById('caAdminContentArea');
+
+  // Calculs du module de Suivi budgétaire (#17)
+  state.budgetData = state.budgetData || {
+    annualEnvelope: 145000,
+    fiscalYear: 'Exercice 2026–2027',
+    allocations: []
+  };
+  const envelope = Number(state.budgetData.annualEnvelope) || 145000;
+  const allocations = state.budgetData.allocations || [];
+  const committedTotal = allocations
+    .filter((a) => a.status === 'Adopté / Engagé')
+    .reduce((sum, a) => sum + (Number(a.amount) || 0), 0);
+  const pendingTotal = allocations
+    .filter((a) => a.status !== 'Adopté / Engagé')
+    .reduce((sum, a) => sum + (Number(a.amount) || 0), 0);
+  const availableBalance = Math.max(0, envelope - committedTotal - pendingTotal);
+  const committedPct = Math.min(100, Math.round((committedTotal / envelope) * 100));
+  const pendingPct = Math.min(100 - committedPct, Math.round((pendingTotal / envelope) * 100));
+
+  const fmtCurrency = (n) => Number(n || 0).toLocaleString('fr-CA') + ' $';
+
+  const budgetRowsHtml = allocations
+    .map(
+      (b) => `
+      <tr>
+        <td><strong>${b.projectTitle}</strong></td>
+        <td>${b.category}</td>
+        <td>${b.beneficiary}</td>
+        <td>
+          <input type="number" min="0" step="500" value="${b.amount}" class="score-input" style="width:92px;" data-budget-amount="${b.id}" /> $
+        </td>
+        <td>
+          <select class="filter-select" style="font-size:0.74rem; padding:0.2rem 0.45rem;" data-budget-status="${b.id}">
+            <option value="Adopté / Engagé" ${b.status === 'Adopté / Engagé' ? 'selected' : ''}>Adopté / Engagé</option>
+            <option value="En réserve (Évaluation C.A.)" ${b.status === 'En réserve (Évaluation C.A.)' ? 'selected' : ''}>En réserve (Évaluation C.A.)</option>
+          </select>
+        </td>
+        <td>
+          <button type="button" class="btn btn--outline btn--small" data-remove-budget="${b.id}">Retirer</button>
+        </td>
+      </tr>
+    `
+    )
+    .join('');
 
   const lettersRows = state.supportLetters
     .map((l) => {
@@ -2627,7 +3451,7 @@ function renderCaAdmin() {
                 ${l.status.includes('Approuvée') ? 'Remettre en attente' : 'Approuver'}
               </button>
               <button type="button" class="btn btn--small" data-generate-letter-doc="${l.id}">
-                Générer la lettre officielle (#16)
+                Générer la lettre officielle
               </button>
             </div>
           </td>
@@ -2699,8 +3523,120 @@ function renderCaAdmin() {
           .join('');
 
   container.innerHTML = `
+    <!-- #17 : Suivi budgétaire et Répartition des fonds par projet du C.A. -->
     <div class="panel-card">
-      <h3 class="panel-card__title">1. Demandes de lettres d'appui &amp; Générateur de lettre officielle (#16)</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; padding-bottom:0.75rem; margin-bottom:1.15rem; border-bottom:1px solid var(--border-color);">
+        <h3 style="font-family:var(--font-heading); font-size:1.02rem; font-weight:500; margin:0;">
+          1. Suivi budgétaire &amp; Répartition des fonds par projet du C.A. (#17)
+        </h3>
+        <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem;">
+          <label for="annualEnvelopeInput" style="color:var(--text-secondary);">Enveloppe annuelle (${state.budgetData.fiscalYear}) :</label>
+          <input type="number" id="annualEnvelopeInput" value="${envelope}" step="1000" class="score-input" style="width:105px;" /> $
+        </div>
+      </div>
+
+      <div class="budget-kpi-grid">
+        <div class="budget-kpi-card">
+          <div class="budget-kpi-card__label">Enveloppe globale C.A.</div>
+          <div class="budget-kpi-card__value">${fmtCurrency(envelope)}</div>
+          <div class="budget-kpi-card__sub">${state.budgetData.fiscalYear}</div>
+        </div>
+        <div class="budget-kpi-card">
+          <div class="budget-kpi-card__label">Fonds adoptés / engagés</div>
+          <div class="budget-kpi-card__value">${fmtCurrency(committedTotal)}</div>
+          <div class="budget-kpi-card__sub">${committedPct} % de l'enveloppe annuelle</div>
+        </div>
+        <div class="budget-kpi-card">
+          <div class="budget-kpi-card__label">En réserve (Évaluation 50/30/20)</div>
+          <div class="budget-kpi-card__value">${fmtCurrency(pendingTotal)}</div>
+          <div class="budget-kpi-card__sub">${pendingPct} % en délibération</div>
+        </div>
+        <div class="budget-kpi-card">
+          <div class="budget-kpi-card__label">Solde disponible (Maillages)</div>
+          <div class="budget-kpi-card__value">${fmtCurrency(availableBalance)}</div>
+          <div class="budget-kpi-card__sub">Disponible pour nouveaux projets</div>
+        </div>
+      </div>
+
+      <div class="budget-bar-track" title="Répartition budgétaire">
+        <div class="budget-bar-fill-committed" style="width:${committedPct}%;"></div>
+        <div class="budget-bar-fill-pending" style="width:${pendingPct}%;"></div>
+      </div>
+
+      <div style="overflow-x:auto; margin-bottom:1.25rem;">
+        <table class="ca-table">
+          <thead>
+            <tr>
+              <th>Projet ou poste budgétaire</th>
+              <th>Catégorie</th>
+              <th>Membres / Bénéficiaires</th>
+              <th>Montant alloué</th>
+              <th>Statut C.A.</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>${budgetRowsHtml}</tbody>
+        </table>
+      </div>
+
+      <form id="addBudgetLineForm" style="display:grid; grid-template-columns: 1.5fr 1fr 1fr 120px auto; gap:0.6rem; align-items:end;">
+        <div>
+          <label class="form-label">Nouveau poste ou projet financé</label>
+          <input type="text" name="projectTitle" class="form-input" placeholder="Ex. Résidence croisée Printemps 2027" required />
+        </div>
+        <div>
+          <label class="form-label">Catégorie</label>
+          <input type="text" name="category" class="form-input" value="Production & Maillage" required />
+        </div>
+        <div>
+          <label class="form-label">Membres bénéficiaires</label>
+          <input type="text" name="beneficiary" class="form-input" placeholder="Noms des membres..." required />
+        </div>
+        <div>
+          <label class="form-label">Montant ($)</label>
+          <input type="number" name="amount" min="100" step="100" value="5000" class="form-input" required />
+        </div>
+        <button type="submit" class="btn">Inscrire au budget</button>
+      </form>
+    </div>
+
+    <!-- #16 : Générateur d'Ordre du jour et Convocation d'assemblée (C.A. / AGA) -->
+    <div class="panel-card">
+      <h3 class="panel-card__title">2. Générateur d'Ordre du jour &amp; Convocation officielle (C.A. / AGA — Idée #16)</h3>
+      <p style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:1.15rem;">
+        Cet outil compile automatiquement les points en attente (suivi budgétaire, demandes de lettres d'appui, dossiers soumis à la grille 50/30/20 et nouvelles candidatures de membres) dans un avis de convocation formel prêt à imprimer ou envoyer.
+      </p>
+      <form id="generateAgendaForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Type d'assemblée</label>
+            <select name="meetingType" class="form-select" required>
+              <option value="Séance régulière du Conseil d'administration (C.A.)">Séance régulière du Conseil d'administration (C.A.)</option>
+              <option value="Assemblée générale annuelle (AGA) des 99 membres">Assemblée générale annuelle (AGA) des 99 membres</option>
+              <option value="Séance extraordinaire du Conseil d'administration">Séance extraordinaire du Conseil d'administration</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date et heure de la séance</label>
+            <input type="text" name="meetingDate" class="form-input" value="Mercredi 18 novembre 2026 à 19 h 00" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Lieu / Modalité de réunion</label>
+            <input type="text" name="meetingLocation" class="form-input" value="215, rue Longueuil, Saint-Jean-sur-Richelieu (Cathédrale / Mur [à] mur) & Visioconférence" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Points particuliers à inscrire au Varia (optionnel)</label>
+            <input type="text" name="customVaria" class="form-input" placeholder="Ex. Programmation estivale, partenariat municipal..." />
+          </div>
+        </div>
+        <button type="submit" class="btn">Générer l'Ordre du jour &amp; la Convocation officielle (PDF / Impression)</button>
+      </form>
+    </div>
+
+    <div class="panel-card">
+      <h3 class="panel-card__title">3. Demandes de lettres d'appui &amp; Générateur de lettre officielle</h3>
       <div style="overflow-x:auto;">
         <table class="ca-table">
           <thead>
@@ -2719,7 +3655,7 @@ function renderCaAdmin() {
     </div>
 
     <div class="panel-card">
-      <h3 class="panel-card__title">2. Évaluation des dépôts de projets — Grille officielle 50 / 30 / 20</h3>
+      <h3 class="panel-card__title">4. Évaluation des dépôts de projets — Grille officielle 50 / 30 / 20</h3>
       <div style="overflow-x:auto;">
         <table class="ca-table">
           <thead>
@@ -2737,7 +3673,7 @@ function renderCaAdmin() {
     </div>
 
     <div class="panel-card">
-      <h3 class="panel-card__title">3. Demandes d'adhésion au collectif reçues (#15)</h3>
+      <h3 class="panel-card__title">5. Demandes d'adhésion au collectif reçues</h3>
       <div style="overflow-x:auto;">
         <table class="ca-table">
           <thead>
@@ -2755,6 +3691,73 @@ function renderCaAdmin() {
     </div>
   `;
 
+  // Gestionnaires Suivi budgétaire (#17)
+  const envInput = document.getElementById('annualEnvelopeInput');
+  if (envInput) {
+    envInput.addEventListener('change', (e) => {
+      state.budgetData.annualEnvelope = Number(e.target.value) || 145000;
+      saveState();
+      renderCaAdmin();
+    });
+  }
+
+  container.querySelectorAll('[data-budget-amount]').forEach((inp) => {
+    inp.addEventListener('change', (e) => {
+      const item = state.budgetData.allocations.find((x) => x.id === inp.dataset.budgetAmount);
+      if (item) {
+        item.amount = Number(e.target.value) || 0;
+        saveState();
+        renderCaAdmin();
+      }
+    });
+  });
+
+  container.querySelectorAll('[data-budget-status]').forEach((sel) => {
+    sel.addEventListener('change', (e) => {
+      const item = state.budgetData.allocations.find((x) => x.id === sel.dataset.budgetStatus);
+      if (item) {
+        item.status = e.target.value;
+        saveState();
+        renderCaAdmin();
+      }
+    });
+  });
+
+  container.querySelectorAll('[data-remove-budget]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.budgetData.allocations = state.budgetData.allocations.filter((x) => x.id !== btn.dataset.removeBudget);
+      saveState();
+      renderCaAdmin();
+    });
+  });
+
+  document.getElementById('addBudgetLineForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    state.budgetData.allocations.push({
+      id: 'bud-' + Date.now(),
+      projectTitle: fd.get('projectTitle'),
+      category: fd.get('category'),
+      beneficiary: fd.get('beneficiary'),
+      amount: Number(fd.get('amount')) || 0,
+      status: 'Adopté / Engagé'
+    });
+    saveState();
+    renderCaAdmin();
+  });
+
+  // Gestionnaire Ordre du jour & Convocation (#16)
+  document.getElementById('generateAgendaForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    openAgendaConvocationModal({
+      meetingType: fd.get('meetingType'),
+      meetingDate: fd.get('meetingDate'),
+      meetingLocation: fd.get('meetingLocation'),
+      customVaria: fd.get('customVaria')
+    });
+  });
+
   container.querySelectorAll('[data-toggle-letter]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const item = state.supportLetters.find((l) => l.id === btn.dataset.toggleLetter);
@@ -2766,7 +3769,6 @@ function renderCaAdmin() {
     });
   });
 
-  // #16 : Ouvrir la lettre d'appui officielle générée automatiquement
   container.querySelectorAll('[data-generate-letter-doc]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openSupportLetterDocModal(btn.dataset.generateLetterDoc);
@@ -2924,7 +3926,7 @@ function renderAdhesion() {
 }
 
 /* ==========================================================================
-   SOUS-PAGE DÉDIÉE 1 : PAGE D'UNE ŒUVRE (#3 Cartel QR, #5 Co-créateurs, #10 Partage, #13 Message réel)
+   SOUS-PAGE DÉDIÉE 1 : PAGE D'UNE ŒUVRE (#3 Cartel QR, #5 Co-créateurs, #10 Fiche technique diffuseur)
    ========================================================================== */
 function openArtworkModal(workId) {
   navigateToRoute(`#/oeuvres/${workId}`);
@@ -2943,6 +3945,13 @@ function renderOeuvreSubpage(workId) {
   const coArtists = (work.coArtistIds || []).map((id) => getArtistById(id));
   const images = work.images || [];
   const mainImg = images[0] || '';
+
+  const rider = work.techRider || {
+    spaceRequired: 'Cimaises d’exposition ou espace scénique adapté',
+    lightingAudio: 'Éclairage directionnel de galerie / sonorisation selon le lieu',
+    setupDuration: 'Montage : demi-journée',
+    insuranceTransport: 'Assurance exposition par le diffuseur'
+  };
 
   const thumbsHtml =
     images.length > 1
@@ -2988,8 +3997,9 @@ function renderOeuvreSubpage(workId) {
     <div class="subpage-top-nav">
       <a href="#/galerie" class="btn btn--outline btn--small">&larr; Retour à la galerie d'œuvres</a>
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <button type="button" class="btn btn--outline btn--small" id="openWorkTechRiderBtn">Fiche technique diffuseur (#10)</button>
         <button type="button" class="btn btn--outline btn--small" id="openWorkCartelQrBtn">Cartel &amp; Code QR (#3)</button>
-        <button type="button" class="btn btn--outline btn--small" id="shareWorkBtn">Partager cette œuvre (#10)</button>
+        <button type="button" class="btn btn--outline btn--small" id="shareWorkBtn">Partager</button>
         <a href="#/oeuvres/${prevWork.id}" class="btn btn--outline btn--small">&larr; Précédente</a>
         <a href="#/oeuvres/${nextWork.id}" class="btn btn--outline btn--small">Suivante &rarr;</a>
       </div>
@@ -3025,13 +4035,41 @@ function renderOeuvreSubpage(workId) {
             <div style="margin-top:0.25rem;"><strong>Référence :</strong> ${work.priceIndication}</div>
           </div>
 
-          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin-bottom:1.5rem;">
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin-bottom:1.25rem;">
             ${work.description}
           </p>
 
+          <!-- #10 : Fiche technique (« Technical Rider » & Conditions d'exposition) -->
+          <div class="tech-rider-box">
+            <div class="tech-rider-box__header">
+              <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.07em; font-weight:600;">
+                Fiche technique &amp; Conditions de diffusion (#10)
+              </span>
+              <button type="button" class="btn btn--outline btn--small" id="inlinePrintTechRiderBtn">Imprimer Fiche PDF</button>
+            </div>
+            <div class="tech-rider-grid">
+              <div class="tech-rider-item">
+                <strong>Espace requis / Accrochage</strong>
+                <span>${rider.spaceRequired}</span>
+              </div>
+              <div class="tech-rider-item">
+                <strong>Éclairage, Son &amp; Équipement</strong>
+                <span>${rider.lightingAudio}</span>
+              </div>
+              <div class="tech-rider-item">
+                <strong>Durée &amp; Temps de montage</strong>
+                <span>${rider.setupDuration}</span>
+              </div>
+              <div class="tech-rider-item">
+                <strong>Transport &amp; Assurance</strong>
+                <span>${rider.insuranceTransport}</span>
+              </div>
+            </div>
+          </div>
+
           <div style="background:var(--bg-page); border:1px solid var(--border-color); padding:1.15rem;">
             <h3 style="font-family:var(--font-heading); font-size:0.88rem; font-weight:500; margin-bottom:0.35rem;">
-              Contacter directement ${artist.name} (#13)
+              Contacter directement ${artist.name}
             </h3>
             <form id="directContactForm">
               <div class="form-group">
@@ -3063,6 +4101,11 @@ function renderOeuvreSubpage(workId) {
     });
   });
 
+  // #10 : Ouvrir la Fiche technique imprimable pour diffuseurs
+  const openRiderHandler = () => openTechRiderModal(work, artist, coArtists, rider);
+  document.getElementById('openWorkTechRiderBtn').addEventListener('click', openRiderHandler);
+  document.getElementById('inlinePrintTechRiderBtn').addEventListener('click', openRiderHandler);
+
   // #3 : Cartel & Code QR imprimable
   document.getElementById('openWorkCartelQrBtn').addEventListener('click', () => {
     openCartelQrModal({
@@ -3074,12 +4117,10 @@ function renderOeuvreSubpage(workId) {
     });
   });
 
-  // #10 : Partager
   document.getElementById('shareWorkBtn').addEventListener('click', (e) => {
     triggerShare(`${work.title} — ${artist.name} | La Cargaison`, window.location.href, e.target);
   });
 
-  // #13 : Envoi réel dans la boîte de réception de l'artiste
   document.getElementById('directContactForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(e.target);
@@ -3101,7 +4142,7 @@ function renderOeuvreSubpage(workId) {
 }
 
 /* ==========================================================================
-   SOUS-PAGE DÉDIÉE 2 : PORTFOLIO D'UN MEMBRE (#3 Cartel QR, #5 Co-créations, #9 Journal, #10 Partage)
+   SOUS-PAGE DÉDIÉE 2 : PORTFOLIO D'UN MEMBRE (#3 Cartel QR, #5 Co-créations, #9 Journal)
    ========================================================================== */
 function openArtistModal(artistId) {
   navigateToRoute(`#/artistes/${artistId}`);
@@ -3177,7 +4218,7 @@ function renderArtisteSubpage(artistId) {
       <a href="#/artistes" class="btn btn--outline btn--small">&larr; Retour au répertoire (${state.artists.length} membres)</a>
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
         <button type="button" class="btn btn--outline btn--small" id="openArtistCartelQrBtn">Cartel &amp; Code QR (#3)</button>
-        <button type="button" class="btn btn--outline btn--small" id="shareArtistBtn">Partager ce profil (#10)</button>
+        <button type="button" class="btn btn--outline btn--small" id="shareArtistBtn">Partager ce profil</button>
         <a href="#/artistes/${prevArtist.id}" class="btn btn--outline btn--small">&larr; ${prevArtist.name}</a>
         <a href="#/artistes/${nextArtist.id}" class="btn btn--outline btn--small">${nextArtist.name} &rarr;</a>
       </div>
@@ -3258,8 +4299,395 @@ function renderArtisteSubpage(artistId) {
 }
 
 /* ==========================================================================
-   OUTILS TRANSVERSAUX : CARTEL QR (#3), PARTAGE (#10), MESSAGE PRIVÉ (#13), LETTRE C.A. (#16)
+   SOUS-PAGE DÉDIÉE 3 : ESPACE GROUPE DE TRAVAIL / COMITÉ ARTISTIQUE (#/projets/[id]) (#13)
    ========================================================================== */
+function renderProjetSubpage(projetId) {
+  const container = document.getElementById('projetSubpageContainer');
+  if (!container) return;
+
+  const me = getArtistById(state.currentMemberId);
+
+  // Chercher dans chantiers ou convertir dynamiquement un post du babillard en groupe de travail
+  let group = (state.chantiers || []).find((c) => c.id === projetId);
+  if (!group) {
+    const post = (state.maillagePosts || []).find((p) => p.id === projetId);
+    if (post) {
+      group = {
+        id: post.id,
+        title: post.title,
+        members: post.interestedMemberIds && post.interestedMemberIds.length > 0 ? post.interestedMemberIds : [post.authorId],
+        disciplines: post.soughtDiscipline,
+        stage: post.category,
+        target: post.body,
+        milestones: [
+          { id: 'mp-1', title: 'Constitution de l’équipe interdisciplinaire', due: 'En cours', owner: getArtistById(post.authorId).name, done: true },
+          { id: 'mp-2', title: 'Première rencontre de travail en atelier / nef', due: 'À planifier', owner: 'Membres embarqués', done: false }
+        ],
+        discussions: (post.replies || []).map((r) => ({
+          authorName: r.authorName,
+          date: r.date,
+          text: r.text
+        }))
+      };
+      state.chantiers.push(group);
+      saveState();
+    } else {
+      group = state.chantiers[0];
+    }
+  }
+
+  const isMemberInGroup = (group.members || []).includes(me.id);
+  const memberProfiles = (group.members || []).map((id) => getArtistById(id));
+  const milestones = group.milestones || [];
+  const discussions = group.discussions || [];
+
+  const membersHtml = memberProfiles
+    .map(
+      (m) => `
+      <a href="#/artistes/${m.id}" style="display:flex; align-items:center; gap:0.75rem; padding:0.7rem 0.9rem; border:1px solid var(--border-color); background:var(--bg-page); text-decoration:none; color:var(--text-primary);">
+        <img src="${m.photo}" alt="${m.name}" style="width:44px; height:44px; object-fit:cover; filter:grayscale(100%); border:1px solid var(--border-color);" />
+        <div>
+          <div style="font-family:var(--font-heading); font-weight:600; font-size:0.88rem;">${m.name}</div>
+          <div style="font-size:0.75rem; color:var(--text-secondary);">${m.roleTitle}</div>
+        </div>
+      </a>
+    `
+    )
+    .join('');
+
+  const milestonesHtml =
+    milestones.length === 0
+      ? `<p style="font-size:0.84rem; color:var(--text-muted);">Aucun jalon inscrit pour le moment.</p>`
+      : milestones
+          .map(
+            (ms) => `
+          <div class="milestone-row ${ms.done ? 'is-done' : ''}">
+            <label style="display:flex; align-items:center; gap:0.65rem; cursor:pointer; flex:1;">
+              <input type="checkbox" ${ms.done ? 'checked' : ''} data-toggle-milestone="${ms.id}" />
+              <span class="milestone-title"><strong>${ms.title}</strong></span>
+            </label>
+            <div style="font-size:0.76rem; color:var(--text-muted); text-align:right;">
+              <span>Resp. : ${ms.owner}</span> &bull; <strong>${ms.due}</strong>
+            </div>
+          </div>
+        `
+          )
+          .join('');
+
+  const discussionsHtml =
+    discussions.length === 0
+      ? `<p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.85rem;">Aucune note de comité publiée.</p>`
+      : discussions
+          .map(
+            (d) => `
+          <div style="padding:0.8rem 1rem; border:1px solid var(--border-color); background:var(--bg-page); margin-bottom:0.6rem; font-size:0.85rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+              <strong>${d.authorName}</strong>
+              <span style="font-size:0.74rem; color:var(--text-muted);">${d.date}</span>
+            </div>
+            <p style="color:var(--text-secondary);">${d.text}</p>
+          </div>
+        `
+          )
+          .join('');
+
+  container.innerHTML = `
+    <div class="subpage-top-nav">
+      <a href="#/maillage/chantiers" class="btn btn--outline btn--small">&larr; Retour aux groupes de travail</a>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <button type="button" class="btn ${isMemberInGroup ? 'btn--outline' : ''} btn--small" id="toggleJoinGroupBtn">
+          ${isMemberInGroup ? `Membre du groupe (${me.name}) — Quitter` : `Rejoindre ce groupe de travail (${me.name})`}
+        </button>
+        <button type="button" class="btn btn--outline btn--small" id="shareProjetBtn">Partager le lien du groupe</button>
+      </div>
+    </div>
+
+    <div class="subpage-sheet" style="padding:2.25rem;">
+      <div style="border-bottom:1px solid var(--border-color); padding-bottom:1.25rem; margin-bottom:1.75rem;">
+        <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
+          Espace Groupe de travail / Comité artistique (#13) &bull; ${group.disciplines}
+        </span>
+        <h1 style="font-family:var(--font-heading); font-size:1.6rem; font-weight:600; margin:0.3rem 0 0.5rem;">
+          ${group.title}
+        </h1>
+        <p style="font-size:0.9rem; color:var(--text-secondary);">
+          <strong>État d'avancement :</strong> ${group.stage} &bull; <strong>Objectif / Cible :</strong> ${group.target}
+        </p>
+      </div>
+
+      <div class="atelier-grid">
+        <div>
+          <div class="panel-card">
+            <h3 class="panel-card__title">Membres embarqués dans ce comité (${memberProfiles.length})</h3>
+            <div style="display:grid; grid-template-columns:1fr; gap:0.6rem; margin-bottom:1rem;">
+              ${membersHtml}
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <h3 class="panel-card__title">Fil de discussion &amp; Notes de travail du groupe</h3>
+            <div style="margin-bottom:1rem;">${discussionsHtml}</div>
+            <form id="addGroupDiscussionForm">
+              <div class="form-group">
+                <textarea name="text" class="form-textarea" placeholder="Ajouter une note de travail ou un compte rendu pour l'équipe..." required style="min-height:70px;"></textarea>
+              </div>
+              <button type="submit" class="btn btn--small">Publier au journal du groupe (${me.name})</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <h3 class="panel-card__title">Échéancier partagé &amp; Jalons de production (#13)</h3>
+          <div style="margin-bottom:1.25rem;">${milestonesHtml}</div>
+          <form id="addMilestoneForm" style="padding-top:1rem; border-top:1px solid var(--border-color);">
+            <div style="font-size:0.74rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin-bottom:0.65rem;">
+              Ajouter une étape à l'échéancier
+            </div>
+            <div class="form-group">
+              <label class="form-label">Intitulé de l'étape / livrable</label>
+              <input type="text" name="title" class="form-input" placeholder="Ex. Répétition technique en nef / Dépôt CALQ..." required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Responsable</label>
+                <input type="text" name="owner" class="form-input" value="${me.name}" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Échéance</label>
+                <input type="text" name="due" class="form-input" placeholder="Ex. 15 novembre 2026" required />
+              </div>
+            </div>
+            <button type="submit" class="btn btn--outline" style="width:100%;">Ajouter ce jalon</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('toggleJoinGroupBtn').addEventListener('click', () => {
+    group.members = group.members || [];
+    const i = group.members.indexOf(me.id);
+    if (i >= 0 && group.members.length > 1) {
+      group.members.splice(i, 1);
+    } else if (i < 0) {
+      group.members.push(me.id);
+    }
+    saveState();
+    renderProjetSubpage(projetId);
+  });
+
+  document.getElementById('shareProjetBtn').addEventListener('click', (e) => {
+    triggerShare(`Groupe de travail : ${group.title} | La Cargaison`, window.location.href, e.target);
+  });
+
+  container.querySelectorAll('[data-toggle-milestone]').forEach((chk) => {
+    chk.addEventListener('change', () => {
+      const m = (group.milestones || []).find((x) => x.id === chk.dataset.toggleMilestone);
+      if (m) {
+        m.done = chk.checked;
+        saveState();
+        renderProjetSubpage(projetId);
+      }
+    });
+  });
+
+  document.getElementById('addMilestoneForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    group.milestones = group.milestones || [];
+    group.milestones.push({
+      id: 'ms-' + Date.now(),
+      title: fd.get('title'),
+      owner: fd.get('owner'),
+      due: fd.get('due'),
+      done: false
+    });
+    saveState();
+    renderProjetSubpage(projetId);
+  });
+
+  document.getElementById('addGroupDiscussionForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    group.discussions = group.discussions || [];
+    group.discussions.push({
+      authorName: `${me.name} (${me.roleTitle})`,
+      date: 'À l’instant',
+      text: fd.get('text')
+    });
+    saveState();
+    renderProjetSubpage(projetId);
+  });
+}
+
+/* ==========================================================================
+   OUTILS TRANSVERSAUX : FICHE TECHNIQUE (#10), ORDRE DU JOUR (#16), CARTEL QR (#3), LETTRE C.A.
+   ========================================================================== */
+function openTechRiderModal(work, artist, coArtists, rider) {
+  const qrImgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(window.location.href)}`;
+  const body = document.getElementById('documentModalBody');
+  const coNames = coArtists.length > 0 ? coArtists.map((c) => `${c.name} (${c.roleTitle})`).join(', ') : 'Création individuelle';
+
+  body.innerHTML = `
+    <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
+        Fiche technique officielle (« Technical Rider » — Idée #10)
+      </span>
+      <button type="button" class="btn btn--small" onclick="window.print()">Imprimer / Exporter en PDF</button>
+    </div>
+    <div class="official-letter-sheet" style="font-family:var(--font-body);">
+      <div style="border-bottom:1px solid var(--border-color); padding-bottom:1rem; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <strong style="font-family:var(--font-heading); font-size:1.05rem;">LA CARGAISON | COLLECTIF CRÉATIF — FICHE TECHNIQUE DIFFUSEUR</strong><br>
+          <span style="font-size:0.8rem; color:var(--text-secondary);">215, rue Longueuil, Saint-Jean-sur-Richelieu (Québec) J3B 6P6 &bull; lacargaison.org</span>
+        </div>
+        <img src="${qrImgUrl}" alt="QR Œuvre" style="width:74px; height:74px; border:1px solid var(--border-color); padding:0.2rem; background:#fff;" />
+      </div>
+
+      <h2 style="font-family:var(--font-heading); font-size:1.35rem; font-weight:600; margin-bottom:0.25rem;">
+        ${work.title} (${work.year})
+      </h2>
+      <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+        Artiste porteur : <strong>${artist.name}</strong> (${artist.roleTitle}) &bull; Discipline : ${work.discipline}<br>
+        Co-créateurs membres : ${coNames}
+      </p>
+
+      <table class="ca-table" style="margin-bottom:1.5rem;">
+        <tbody>
+          <tr>
+            <th style="width:32%;">Médium / Format</th>
+            <td>${work.medium} (${work.formatType})</td>
+          </tr>
+          <tr>
+            <th>Statut de diffusion</th>
+            <td>${work.availability} — ${work.priceIndication}</td>
+          </tr>
+          <tr>
+            <th>1. Espace requis &amp; Accrochage</th>
+            <td>${rider.spaceRequired}</td>
+          </tr>
+          <tr>
+            <th>2. Éclairage, Sonorisation &amp; Multimédia</th>
+            <td>${rider.lightingAudio}</td>
+          </tr>
+          <tr>
+            <th>3. Durée, Montage &amp; Démontage</th>
+            <td>${rider.setupDuration}</td>
+          </tr>
+          <tr>
+            <th>4. Transport &amp; Conditions d'assurance</th>
+            <td>${rider.insuranceTransport}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="font-size:0.86rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+        <strong>Synopsis / Description :</strong> ${work.description}
+      </div>
+
+      <div style="font-size:0.8rem; color:var(--text-muted); border-top:1px solid var(--border-color); padding-top:0.85rem;">
+        Document technique généré depuis le portail de <strong>La Cargaison | collectif créatif</strong> — Permalien : <code>${window.location.href}</code>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('documentModal').classList.add('open');
+}
+
+function openAgendaConvocationModal({ meetingType, meetingDate, meetingLocation, customVaria }) {
+  const body = document.getElementById('documentModalBody');
+  const today = new Date().toLocaleDateString('fr-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const me = getArtistById(state.currentMemberId);
+
+  const env = Number(state.budgetData?.annualEnvelope) || 145000;
+  const committed = (state.budgetData?.allocations || [])
+    .filter((a) => a.status === 'Adopté / Engagé')
+    .reduce((s, a) => s + (Number(a.amount) || 0), 0);
+  const avail = Math.max(0, env - committed);
+
+  const lettersList = state.supportLetters
+    .map((l) => `<li><strong>${l.projectTitle}</strong> — Demandeur : ${getArtistById(l.artistId).name} (${l.grantAgency}) — Statut : ${l.status}</li>`)
+    .join('');
+
+  const projectsList = state.projectSubmissions
+    .map((p) => {
+      const tot = Number(p.scoreMerit) + Number(p.scoreImpact) + Number(p.scoreFeasibility);
+      return `<li><strong>${p.title}</strong> (${getArtistById(p.artistId).name}) — Pointage grille 50/30/20 : <strong>${tot} / 100</strong></li>`;
+    })
+    .join('');
+
+  const appsList =
+    (state.membershipApplications || []).length === 0
+      ? `<li>Aucune nouvelle demande d'adhésion en attente de ratification.</li>`
+      : state.membershipApplications
+          .map((a) => `<li><strong>${a.name}</strong> — ${a.category} (${a.roleTitle}) — Statut : ${a.status}</li>`)
+          .join('');
+
+  body.innerHTML = `
+    <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
+        Avis de convocation &amp; Ordre du jour officiel (#16)
+      </span>
+      <button type="button" class="btn btn--small" onclick="window.print()">Imprimer / Exporter en PDF</button>
+    </div>
+    <div class="official-letter-sheet">
+      <div style="border-bottom:1px solid var(--border-color); padding-bottom:1rem; margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <strong style="font-family:var(--font-heading); font-size:1.05rem;">LA CARGAISON | COLLECTIF CRÉATIF</strong><br>
+          <span style="font-size:0.8rem; color:var(--text-secondary);">215, rue Longueuil, Saint-Jean-sur-Richelieu (Québec) J3B 6P6</span>
+        </div>
+        <div style="font-size:0.82rem; color:var(--text-secondary);">Émis le ${today}</div>
+      </div>
+
+      <h2 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:600; margin-bottom:0.35rem;">
+        AVIS DE CONVOCATION &amp; PROJET D'ORDRE DU JOUR
+      </h2>
+      <p style="font-size:0.9rem; margin-bottom:1.25rem;">
+        <strong>Instances :</strong> ${meetingType}<br>
+        <strong>Date et heure :</strong> ${meetingDate}<br>
+        <strong>Lieu :</strong> ${meetingLocation}
+      </p>
+
+      <ol style="margin-left:1.25rem; line-height:1.85; font-size:0.9rem;">
+        <li><strong>Ouverture de la séance et vérification du quorum</strong></li>
+        <li><strong>Lecture et adoption de l'ordre du jour</strong></li>
+        <li><strong>Adoption du procès-verbal de la séance précédente et suivis</strong></li>
+        <li>
+          <strong>Trésorerie et suivi budgétaire (#17) :</strong>
+          <ul style="margin-left:1.1rem; font-size:0.85rem; color:var(--text-secondary);">
+            <li>Enveloppe annuelle : ${env.toLocaleString('fr-CA')} $ &bull; Engagé : ${committed.toLocaleString('fr-CA')} $ &bull; Solde disponible : ${avail.toLocaleString('fr-CA')} $</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Évaluation des projets de création déposés (Grille 50 / 30 / 20) :</strong>
+          <ul style="margin-left:1.1rem; font-size:0.85rem; color:var(--text-secondary);">${projectsList}</ul>
+        </li>
+        <li>
+          <strong>Ratification des demandes de lettres d'appui officielles (CALQ / CAC / MRC) :</strong>
+          <ul style="margin-left:1.1rem; font-size:0.85rem; color:var(--text-secondary);">${lettersList}</ul>
+        </li>
+        <li>
+          <strong>Admission de nouveaux membres (Actifs, Associés, Observateurs) :</strong>
+          <ul style="margin-left:1.1rem; font-size:0.85rem; color:var(--text-secondary);">${appsList}</ul>
+        </li>
+        <li>
+          <strong>Vie associative, mutualisation (#11-#12) et lieux de diffusion partenaires (#15)</strong>
+        </li>
+        <li>
+          <strong>Varia :</strong> ${customVaria ? customVaria : 'Points divers ajoutés en début de séance'}
+        </li>
+        <li><strong>Date de la prochaine rencontre et levée de l'assemblée</strong></li>
+      </ol>
+
+      <div style="margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border-color); font-size:0.85rem;">
+        Préparé pour le Conseil d'administration par <strong>${me.name}</strong> — La Cargaison | collectif créatif (99 membres répertoriés).
+      </div>
+    </div>
+  `;
+
+  document.getElementById('documentModal').classList.add('open');
+}
+
 function openCartelQrModal({ kicker, title, subtitle, details, url }) {
   const qrImgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(url)}`;
   const body = document.getElementById('documentModalBody');
