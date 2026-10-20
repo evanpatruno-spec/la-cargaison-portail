@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <!-- Bandeau supérieur discret de simulation C.A. (Idée #2 : sélecteur des 99 membres) -->
+  <!-- Bandeau supérieur de simulation C.A. & Mode Nef / Galerie (#20) -->
   <div class="ca-demo-bar">
     <div class="ca-demo-bar__inner">
       <div class="ca-demo-bar__left">
@@ -23,8 +23,9 @@
         </div>
       </div>
       <div class="ca-demo-bar__controls">
-        <label for="activeMemberSelect" class="ca-demo-bar__label">Tester dans la peau de :</label>
+        <label for="activeMemberSelect" class="ca-demo-bar__label">Membre actif :</label>
         <select id="activeMemberSelect" class="member-impersonate-select" aria-label="Choisir le membre actif"></select>
+        <button type="button" class="role-switch-btn" id="themeToggleBtn" title="Basculer entre le Mode Galerie (Clair) et le Mode Nef (Sombre)">Mode Nef (Sombre)</button>
         <button type="button" class="reset-demo-btn" id="resetDemoBtn">Réinitialiser</button>
       </div>
     </div>
@@ -41,7 +42,7 @@
         <li><a href="https://www.lacargaison.org/creations/" target="_blank" rel="noopener">Créations</a></li>
         <li><a href="https://www.lacargaison.org/nouvelles/" target="_blank" rel="noopener">Nouvelles</a></li>
         <li><a href="https://www.lacargaison.org/a-propos/" target="_blank" rel="noopener">À propos</a></li>
-        <li><a href="#galerie" class="is-current-module">Membres &amp; Galerie</a></li>
+        <li><a href="#/galerie" class="is-current-module">Membres &amp; Galerie</a></li>
         <li><a href="https://www.lacargaison.org/contact/" target="_blank" rel="noopener">Contact</a></li>
       </ul>
     </div>
@@ -62,11 +63,14 @@
         </button>
         <button type="button" class="module-tab" data-view="atelier">
           <span class="module-tab__num">04</span> Mon atelier
-          <span class="module-tab__badge">Membre</span>
+          <span class="module-tab__badge" id="atelierNavBadge">Membre</span>
         </button>
         <button type="button" class="module-tab" data-view="ca-admin" id="navTabCaAdmin">
           <span class="module-tab__num">05</span> Gouvernance C.A.
           <span class="module-tab__badge" id="caPendingCountBadge">C.A.</span>
+        </button>
+        <button type="button" class="module-tab" data-view="adhesion">
+          <span class="module-tab__num">06</span> Devenir membre
         </button>
       </div>
       <div class="module-nav__user" id="navUserStatus"></div>
@@ -87,7 +91,7 @@
   <main class="main-container">
 
     <!-- ====================================================================
-         01. VUE GALERIE MULTIDISCIPLINAIRE (Capsules #10, Multi-vues #7, Lecteurs #8)
+         01. VUE GALERIE MULTIDISCIPLINAIRE (Recherche & Tri #4, Co-créateurs #5)
          ==================================================================== -->
     <section id="view-galerie" class="view-section active">
       <div class="section-header">
@@ -95,16 +99,16 @@
           <span class="section-header__kicker">Vitrine permanente des membres</span>
           <h1 class="section-header__title">Galerie multidisciplinaire</h1>
           <p class="section-header__desc">
-            Œuvres individuelles, recherches et créations des artistes de La Cargaison — arts visuels, arts numériques, musique, arts vivants, cinéma et littérature.
+            Œuvres individuelles et maillages créatifs des artistes de La Cargaison — arts visuels, arts numériques, musique, arts vivants, cinéma et littérature.
           </p>
         </div>
         <div id="galerieHeaderAction"></div>
       </div>
 
-      <!-- Sélections thématiques : Capsules du collectif (Idée #10) -->
+      <!-- Sélections thématiques : Capsules du collectif -->
       <div id="capsulesContainer"></div>
 
-      <!-- Barre de filtres sobres -->
+      <!-- Barre de filtres, recherche par mot-clé et tri (#4) -->
       <div class="filter-bar">
         <div class="filter-group" id="disciplineFilterGroup">
           <button type="button" class="filter-btn active" data-discipline="all">Toutes les disciplines</button>
@@ -115,7 +119,15 @@
           <button type="button" class="filter-btn" data-discipline="Littérature & Parole">Littérature &amp; Parole</button>
           <button type="button" class="filter-btn" data-discipline="Cinéma & Réalisation">Cinéma &amp; Réalisation</button>
         </div>
-        <div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <input type="search" id="gallerySearchInput" class="search-input" placeholder="Chercher œuvre, artiste, médium..." />
+          <select id="gallerySortSelect" class="filter-select" aria-label="Trier les œuvres">
+            <option value="default">Tri : Sélection éditoriale</option>
+            <option value="year-desc">Tri : Plus récentes d'abord</option>
+            <option value="title-asc">Tri : Par titre (A–Z)</option>
+            <option value="artist-asc">Tri : Par artiste (A–Z)</option>
+            <option value="views-desc">Tri : Œuvres multi-vues d'abord</option>
+          </select>
           <select id="availabilityFilter" class="filter-select" aria-label="Filtrer par statut">
             <option value="all">Tous les statuts</option>
             <option value="Disponible (Acquisition)">Disponible pour acquisition</option>
@@ -129,7 +141,7 @@
     </section>
 
     <!-- ====================================================================
-         02. VUE RÉPERTOIRE DES 99 MEMBRES (Idées #1, #3, #4, #5)
+         02. VUE RÉPERTOIRE DES 99 MEMBRES (Vue Grille vs Vue Index #8)
          ==================================================================== -->
     <section id="view-artistes" class="view-section">
       <div class="section-header">
@@ -137,12 +149,18 @@
           <span class="section-header__kicker">Collectif créatif — Saint-Jean-sur-Richelieu</span>
           <h1 class="section-header__title">Répertoire officiel des membres</h1>
           <p class="section-header__desc">
-            Les 99 artistes professionnels et membres associés de La Cargaison. Cliquez sur une fiche pour consulter le portfolio, les liens externes, le CV et les œuvres.
+            Les artistes professionnels et membres associés de La Cargaison. Basculez entre la vue Portraits et la vue Index compacte, ou filtrez les membres ayant publié des œuvres.
           </p>
         </div>
-        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+          <div style="display:flex; border:1px solid var(--border-color);">
+            <button type="button" class="filter-btn active" id="viewModeGridBtn" style="border:none;">Vue Portraits</button>
+            <button type="button" class="filter-btn" id="viewModeListBtn" style="border:none;">Vue Index (Liste)</button>
+          </div>
+          <button type="button" class="filter-btn" id="filterWithWorksBtn">Avec œuvres en galerie</button>
           <select id="artistAvailabilityFilter" class="filter-select" aria-label="Filtrer par disponibilité au maillage">
             <option value="all">Toutes disponibilités</option>
+            <option value="Membre actif — La Cargaison">Membre actif</option>
             <option value="Ouvert aux collaborations">Ouvert aux collaborations</option>
             <option value="Disponible pour contrat / commande">Disponible pour contrat / commande</option>
             <option value="En production">En production</option>
@@ -151,36 +169,34 @@
         </div>
       </div>
 
-      <!-- Boutons de discipline avec compteurs dynamiques (#3) -->
       <div class="filter-bar">
         <div class="filter-group" id="artistDisciplineFilterGroup"></div>
       </div>
 
-      <!-- Index alphabétique A-Z (#3) -->
       <div class="az-bar" id="artistAzBar" aria-label="Filtrer par initiale"></div>
 
-      <div class="artists-grid" id="artistsGrid"></div>
+      <div id="artistsContainer"></div>
     </section>
 
     <!-- ====================================================================
-         03. VUE MAILLAGE, CHANTIERS, ÉQUIPEMENTS & CALENDRIER (#11 à #15)
+         03. VUE MAILLAGE, CHANTIERS, ÉQUIPEMENTS, BOURSES (#11, #12, #14) & CALENDRIER
          ==================================================================== -->
     <section id="view-maillage" class="view-section">
       <div class="section-header">
         <div>
           <span class="section-header__kicker">Vie du collectif &amp; rayonnement externe</span>
-          <h1 class="section-header__title">Maillage, chantiers &amp; calendrier hors-les-murs</h1>
+          <h1 class="section-header__title">Maillage, chantiers, bourses &amp; calendrier</h1>
           <p class="section-header__desc">
-            Appels à collaborateurs entre membres, duos en chantier, prêt mutuel d'équipement et calendrier public des événements solos des artistes.
+            Outil de jumelage rapide par besoin, appels à collaborateurs, duos en chantier, prêt mutuel d'équipement, veille des bourses et calendrier public.
           </p>
         </div>
       </div>
 
-      <!-- Sous-navigation sobre à 4 volets -->
       <div class="subnav-bar" id="maillageSubnav">
-        <button type="button" class="subnav-btn active" data-msub="babillard">Babillard d'appels à maillage</button>
+        <button type="button" class="subnav-btn active" data-msub="babillard">Babillard &amp; Jumelage rapide</button>
         <button type="button" class="subnav-btn" data-msub="chantiers">Chantiers &amp; duos en cours</button>
         <button type="button" class="subnav-btn" data-msub="equipements">Prêt d'équipement &amp; ateliers</button>
+        <button type="button" class="subnav-btn" data-msub="bourses">Bourses &amp; appels de dossiers</button>
         <button type="button" class="subnav-btn" data-msub="calendrier">Calendrier hors-les-murs (Public)</button>
       </div>
 
@@ -188,7 +204,7 @@
     </section>
 
     <!-- ====================================================================
-         04. VUE MON ATELIER (Profil #4/#5, Dépôt multi-vues #7/#8, Appui #16, Projet 50/30/20 #17)
+         04. VUE MON ATELIER (Téléversement local #2, Multi-liens #6, Journal #9, Messages #13)
          ==================================================================== -->
     <section id="view-atelier" class="view-section">
       <div class="section-header">
@@ -196,13 +212,14 @@
           <span class="section-header__kicker">Espace individuel du membre</span>
           <h1 class="section-header__title" id="atelierHeaderTitle">Mon atelier</h1>
           <p class="section-header__desc">
-            Gérez votre fiche publique, publiez vos œuvres dans la galerie et accédez aux services du Conseil d'administration (lettre d'appui et dépôt de projet).
+            Gérez votre fiche multi-liens, votre journal d'atelier, téléversez vos œuvres depuis votre ordinateur et consultez vos messages reçus.
           </p>
         </div>
       </div>
 
       <div class="subnav-bar" id="atelierSubnav">
-        <button type="button" class="subnav-btn active" data-asub="portfolio">Portfolio &amp; publication d'œuvre</button>
+        <button type="button" class="subnav-btn active" data-asub="portfolio">Portfolio, Journal &amp; Dépôt d'œuvre</button>
+        <button type="button" class="subnav-btn" data-asub="messages">Messages reçus (<span id="atelierMsgCount">0</span>)</button>
         <button type="button" class="subnav-btn" data-asub="appui">Demander une lettre d'appui du C.A.</button>
         <button type="button" class="subnav-btn" data-asub="depot">Déposer un projet à La Cargaison (Grille 50/30/20)</button>
       </div>
@@ -211,7 +228,7 @@
     </section>
 
     <!-- ====================================================================
-         05. VUE GOUVERNANCE C.A. (Idée #18 : Tableau de bord C.A.)
+         05. VUE GOUVERNANCE C.A. (Générateur de Lettre d'appui #16 & Adhésions #15)
          ==================================================================== -->
     <section id="view-ca-admin" class="view-section">
       <div class="section-header">
@@ -219,12 +236,29 @@
           <span class="section-header__kicker">Conseil d'administration — OBNL La Cargaison</span>
           <h1 class="section-header__title">Gouvernance &amp; suivi du C.A.</h1>
           <p class="section-header__desc">
-            Gestion centralisée des demandes de lettres d'appui, évaluation collégiale des dépôts de projets selon la grille officielle (50 % / 30 % / 20 %) et commissariat des capsules.
+            Génération automatique des lettres d'appui officielles, évaluation des projets selon la grille 50 / 30 / 20 et validation des nouvelles demandes d'adhésion.
           </p>
         </div>
       </div>
 
       <div id="caAdminContentArea"></div>
+    </section>
+
+    <!-- ====================================================================
+         06. VUE DEVENIR MEMBRE (Idée #15 : Adhésion Actif / Associé / Observateur)
+         ==================================================================== -->
+    <section id="view-adhesion" class="view-section">
+      <div class="section-header">
+        <div>
+          <span class="section-header__kicker">Adhésion officielle — Collectif créatif La Cargaison</span>
+          <h1 class="section-header__title">Devenir membre du collectif</h1>
+          <p class="section-header__desc">
+            Critères d'admissibilité officiels (Membre actif, Membre associé, Membre observateur) et formulaire de candidature transmis au Conseil d'administration.
+          </p>
+        </div>
+      </div>
+
+      <div id="adhesionContentArea"></div>
     </section>
 
     <!-- ====================================================================
@@ -243,27 +277,19 @@
 
   </main>
 
-  <!-- Modale 1 : Cartel détaillé d'une œuvre (Multi-images #7, Lecteur intégré #8, Contact direct) -->
-  <div class="modal-backdrop" id="artworkModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-sheet">
-      <button type="button" class="modal-close" id="closeArtworkModal" aria-label="Fermer">&times;</button>
-      <div id="artworkModalBody"></div>
-    </div>
-  </div>
-
-  <!-- Modale 2 : Portfolio individuel d'un membre (Statut #4, Liens & CV #5) -->
-  <div class="modal-backdrop" id="artistModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-sheet">
-      <button type="button" class="modal-close" id="closeArtistModal" aria-label="Fermer">&times;</button>
-      <div id="artistModalBody"></div>
-    </div>
-  </div>
-
-  <!-- Modale 3 : Message privé direct à un membre (#12) -->
+  <!-- Modale : Message privé direct à un membre (#12 & #13) -->
   <div class="modal-backdrop" id="privateMsgModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-sheet" style="max-width: 540px;">
       <button type="button" class="modal-close" id="closePrivateMsgModal" aria-label="Fermer">&times;</button>
       <div id="privateMsgModalBody" style="padding: 2.25rem;"></div>
+    </div>
+  </div>
+
+  <!-- Modale : Cartel & Code QR imprimable (#3) / Lettre d'appui officielle du C.A. (#16) -->
+  <div class="modal-backdrop" id="documentModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-sheet" style="max-width: 720px;">
+      <button type="button" class="modal-close" id="closeDocumentModal" aria-label="Fermer">&times;</button>
+      <div id="documentModalBody" style="padding: 2.5rem;"></div>
     </div>
   </div>
 
@@ -273,7 +299,7 @@
         <strong>La Cargaison | collectif créatif</strong> — 215 Rue Longueuil (Cathédrale / Mur [à] mur), Saint-Jean-sur-Richelieu, QC J3B 6P6
       </div>
       <div>
-        Portail Galerie &amp; Maillage — 99 membres répertoriés
+        Portail Galerie &amp; Maillage — Architecture de sous-pages &amp; 99 membres répertoriés
       </div>
     </div>
   </footer>
