@@ -73,6 +73,17 @@
     </div>
   </nav>
 
+  <!-- Fil d'Ariane & Permalien de sous-page (persistant au rafraîchissement F5) -->
+  <div class="breadcrumb-bar" id="breadcrumbBar">
+    <div class="breadcrumb-bar__inner">
+      <div class="breadcrumb-trail" id="breadcrumbTrail"></div>
+      <div class="breadcrumb-actions">
+        <span class="breadcrumb-url-pill" id="currentRouteBadge">#/galerie</span>
+        <button type="button" class="btn btn--outline btn--small" id="copySubpageUrlBtn">Copier le lien de cette page</button>
+      </div>
+    </div>
+  </div>
+
   <main class="main-container">
 
     <!-- ====================================================================
@@ -214,6 +225,20 @@
       </div>
 
       <div id="caAdminContentArea"></div>
+    </section>
+
+    <!-- ====================================================================
+         SOUS-PAGE DÉDIÉE : CARTEL & PAGE D'UNE ŒUVRE (#/oeuvres/[id])
+         ==================================================================== -->
+    <section id="view-oeuvre-detail" class="view-section">
+      <div id="oeuvreSubpageContainer"></div>
+    </section>
+
+    <!-- ====================================================================
+         SOUS-PAGE DÉDIÉE : PORTFOLIO D'UN MEMBRE (#/artistes/[slug])
+         ==================================================================== -->
+    <section id="view-artiste-detail" class="view-section">
+      <div id="artisteSubpageContainer"></div>
     </section>
 
   </main>

@@ -422,16 +422,18 @@ const INITIAL_DATA = {
 };
 
 let state = loadState();
-let activeGalleryDiscipline = 'all';
-let activeGalleryAvailability = 'all';
-let activeArtistDiscipline = 'all';
-let activeArtistLetter = 'all';
-let activeArtistAvail = 'all';
+let activeGalleryDiscipline = state.ui?.activeGalleryDiscipline || 'all';
+let activeGalleryAvailability = state.ui?.activeGalleryAvailability || 'all';
+let activeArtistDiscipline = state.ui?.activeArtistDiscipline || 'all';
+let activeArtistLetter = state.ui?.activeArtistLetter || 'all';
+let activeArtistAvail = state.ui?.activeArtistAvail || 'all';
 let artistSearchQuery = '';
-let activeMaillageSubtab = 'babillard';
+let activeMaillageSubtab = state.ui?.activeMaillageSubtab || 'babillard';
 let activeMaillageDiscFilter = 'all';
 let activeMaillageTypeFilter = 'all';
-let activeAtelierSubtab = 'portfolio';
+let activeAtelierSubtab = state.ui?.activeAtelierSubtab || 'portfolio';
+let currentViewName = 'galerie';
+let currentDetailId = null;
 
 function loadState() {
   try {
@@ -450,6 +452,15 @@ function loadState() {
 
 function saveState() {
   try {
+    state.ui = {
+      activeGalleryDiscipline,
+      activeGalleryAvailability,
+      activeArtistDiscipline,
+      activeArtistLetter,
+      activeArtistAvail,
+      activeMaillageSubtab,
+      activeAtelierSubtab
+    };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (e) {
     console.warn('Sauvegarde localStorage impossible:', e);
@@ -461,7 +472,7 @@ function getArtistById(id) {
 }
 
 /* ==========================================================================
-   INITIALISATION
+   INITIALISATION & ROUTEUR DE SOUS-PAGES (PERSISTANT AU RAFRAÎCHISSEMENT F5)
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   populateMemberSelector();
@@ -470,8 +481,173 @@ document.addEventListener('DOMContentLoaded', () => {
   bindRoleSwitcher();
   bindFilters();
   bindModals();
+  bindCopyUrlButton();
+
+  window.addEventListener('hashchange', () => {
+    handleRouteFromUrl(false);
+  });
+
+  if (!window.location.hash || window.location.hash === '#') {
+    window.history.replaceState(null, '', '#/galerie');
+  }
   renderAll();
+  handleRouteFromUrl(true);
 });
+
+function navigateToRoute(routeHash) {
+  if (window.location.hash !== routeHash) {
+    window.location.hash = routeHash;
+  } else {
+    handleRouteFromUrl(false);
+  }
+}
+
+function handleRouteFromUrl(isInitialLoad) {
+  const hash = (window.location.hash || '#/galerie').replace(/^#\/?/, '');
+  const parts = hash.split('/').filter(Boolean);
+  const root = parts[0] || 'galerie';
+  const sub = parts[1] || '';
+
+  if (root === 'galerie') {
+    if (sub === 'capsule' && parts[2]) {
+      state.activeCapsuleId = parts[2];
+      saveState();
+      renderCapsules();
+    }
+    activateViewDOM('galerie');
+    updateBreadcrumb([{ label: "01. Galerie d'œuvres", route: '#/galerie' }], `#/${hash || 'galerie'}`);
+  } else if (root === 'oeuvres' && sub) {
+    currentDetailId = sub;
+    renderOeuvreSubpage(sub);
+    activateViewDOM('oeuvre-detail', 'galerie');
+    const w = state.works.find((x) => x.id === sub);
+    updateBreadcrumb(
+      [
+        { label: "01. Galerie d'œuvres", route: '#/galerie' },
+        { label: w ? w.title : 'Œuvre', route: `#/oeuvres/${sub}` }
+      ],
+      `#/oeuvres/${sub}`
+    );
+  } else if (root === 'artistes') {
+    if (sub) {
+      currentDetailId = sub;
+      renderArtisteSubpage(sub);
+      activateViewDOM('artiste-detail', 'artistes');
+      const a = getArtistById(sub);
+      updateBreadcrumb(
+        [
+          { label: `02. Répertoire des membres (${state.artists.length})`, route: '#/artistes' },
+          { label: a ? a.name : 'Artiste', route: `#/artistes/${sub}` }
+        ],
+        `#/artistes/${sub}`
+      );
+    } else {
+      activateViewDOM('artistes');
+      updateBreadcrumb(
+        [{ label: `02. Répertoire des membres (${state.artists.length})`, route: '#/artistes' }],
+        '#/artistes'
+      );
+    }
+  } else if (root === 'maillage') {
+    const validSubs = ['babillard', 'chantiers', 'equipements', 'calendrier'];
+    activeMaillageSubtab = validSubs.includes(sub) ? sub : 'babillard';
+    saveState();
+    document.querySelectorAll('#maillageSubnav .subnav-btn').forEach((b) => {
+      b.classList.toggle('active', b.dataset.msub === activeMaillageSubtab);
+    });
+    renderMaillage();
+    activateViewDOM('maillage');
+    const subLabels = {
+      babillard: "Babillard d'appels à maillage",
+      chantiers: 'Chantiers & duos en cours',
+      equipements: "Prêt d'équipement & ateliers",
+      calendrier: 'Calendrier hors-les-murs (Public)'
+    };
+    updateBreadcrumb(
+      [
+        { label: '03. Maillage & Calendrier', route: '#/maillage/babillard' },
+        { label: subLabels[activeMaillageSubtab], route: `#/maillage/${activeMaillageSubtab}` }
+      ],
+      `#/maillage/${activeMaillageSubtab}`
+    );
+  } else if (root === 'atelier') {
+    const validSubs = ['portfolio', 'appui', 'depot'];
+    activeAtelierSubtab = validSubs.includes(sub) ? sub : 'portfolio';
+    saveState();
+    document.querySelectorAll('#atelierSubnav .subnav-btn').forEach((b) => {
+      b.classList.toggle('active', b.dataset.asub === activeAtelierSubtab);
+    });
+    renderAtelier();
+    activateViewDOM('atelier');
+    const subLabels = {
+      portfolio: "Portfolio & publication d'œuvre",
+      appui: "Demander une lettre d'appui du C.A.",
+      depot: 'Déposer un projet (Grille 50/30/20)'
+    };
+    updateBreadcrumb(
+      [
+        { label: '04. Mon atelier', route: '#/atelier/portfolio' },
+        { label: subLabels[activeAtelierSubtab], route: `#/atelier/${activeAtelierSubtab}` }
+      ],
+      `#/atelier/${activeAtelierSubtab}`
+    );
+  } else if (root === 'gouvernance-ca' || root === 'ca-admin') {
+    activateViewDOM('ca-admin');
+    updateBreadcrumb([{ label: '05. Gouvernance C.A.', route: '#/gouvernance-ca' }], '#/gouvernance-ca');
+  } else {
+    activateViewDOM('galerie');
+    updateBreadcrumb([{ label: "01. Galerie d'œuvres", route: '#/galerie' }], '#/galerie');
+  }
+
+  if (!isInitialLoad) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function activateViewDOM(sectionId, highlightTabId) {
+  currentViewName = sectionId;
+  const tabTarget = highlightTabId || sectionId;
+  document.querySelectorAll('.module-tab').forEach((t) => {
+    t.classList.toggle('active', t.dataset.view === tabTarget);
+  });
+  document.querySelectorAll('.view-section').forEach((sec) => {
+    sec.classList.toggle('active', sec.id === `view-${sectionId}`);
+  });
+}
+
+function updateBreadcrumb(items, routeString) {
+  const trail = document.getElementById('breadcrumbTrail');
+  const badge = document.getElementById('currentRouteBadge');
+  if (badge) badge.textContent = routeString;
+  if (!trail) return;
+
+  const rootCrumb = `<a href="#/galerie" class="breadcrumb-link">Portail La Cargaison</a>`;
+  const crumbsHtml = items
+    .map((item, idx) => {
+      const isLast = idx === items.length - 1;
+      if (isLast) {
+        return `<span class="breadcrumb-sep">/</span> <span class="breadcrumb-current">${item.label}</span>`;
+      }
+      return `<span class="breadcrumb-sep">/</span> <a href="${item.route}" class="breadcrumb-link">${item.label}</a>`;
+    })
+    .join(' ');
+
+  trail.innerHTML = `${rootCrumb} ${crumbsHtml}`;
+}
+
+function bindCopyUrlButton() {
+  const btn = document.getElementById('copySubpageUrlBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Lien copié !';
+      setTimeout(() => {
+        btn.textContent = orig;
+      }, 1800);
+    });
+  });
+}
 
 function populateMemberSelector() {
   const select = document.getElementById('activeMemberSelect');
@@ -490,43 +666,47 @@ function populateMemberSelector() {
     }
     saveState();
     renderAll();
+    if (currentViewName === 'artiste-detail') {
+      navigateToRoute(`#/artistes/${state.currentMemberId}`);
+    }
   });
 }
 
 function bindNavigation() {
   document.querySelectorAll('.module-tab').forEach((tab) => {
     tab.addEventListener('click', () => {
-      switchView(tab.dataset.view);
+      const v = tab.dataset.view;
+      if (v === 'galerie') navigateToRoute('#/galerie');
+      else if (v === 'artistes') navigateToRoute('#/artistes');
+      else if (v === 'maillage') navigateToRoute(`#/maillage/${activeMaillageSubtab}`);
+      else if (v === 'atelier') navigateToRoute(`#/atelier/${activeAtelierSubtab}`);
+      else if (v === 'ca-admin') navigateToRoute('#/gouvernance-ca');
     });
   });
 }
 
 function switchView(viewName) {
-  document.querySelectorAll('.module-tab').forEach((t) => {
-    t.classList.toggle('active', t.dataset.view === viewName);
-  });
-  document.querySelectorAll('.view-section').forEach((sec) => {
-    sec.classList.toggle('active', sec.id === `view-${viewName}`);
-  });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (viewName === 'galerie') navigateToRoute('#/galerie');
+  else if (viewName === 'artistes') navigateToRoute('#/artistes');
+  else if (viewName === 'maillage') navigateToRoute(`#/maillage/${activeMaillageSubtab}`);
+  else if (viewName === 'atelier') navigateToRoute(`#/atelier/${activeAtelierSubtab}`);
+  else if (viewName === 'ca-admin') navigateToRoute('#/gouvernance-ca');
 }
 
 function bindSubnavs() {
   document.querySelectorAll('#maillageSubnav .subnav-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('#maillageSubnav .subnav-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
       activeMaillageSubtab = btn.dataset.msub;
-      renderMaillage();
+      saveState();
+      navigateToRoute(`#/maillage/${activeMaillageSubtab}`);
     });
   });
 
   document.querySelectorAll('#atelierSubnav .subnav-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('#atelierSubnav .subnav-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
       activeAtelierSubtab = btn.dataset.asub;
-      renderAtelier();
+      saveState();
+      navigateToRoute(`#/atelier/${activeAtelierSubtab}`);
     });
   });
 }
@@ -2003,11 +2183,21 @@ function renderCaAdmin() {
 }
 
 /* ==========================================================================
-   MODALE 1 : CARTEL D'ŒUVRE (Photos réelles multi-vues #7, Liens réels #5)
+   SOUS-PAGE DÉDIÉE 1 : PAGE D'UNE ŒUVRE (#/oeuvres/[id] — Persistante F5)
    ========================================================================== */
 function openArtworkModal(workId) {
-  const work = state.works.find((w) => w.id === workId);
+  navigateToRoute(`#/oeuvres/${workId}`);
+}
+
+function renderOeuvreSubpage(workId) {
+  const container = document.getElementById('oeuvreSubpageContainer');
+  const idx = state.works.findIndex((w) => w.id === workId);
+  const work = state.works[idx] || state.works[0];
   if (!work) return;
+
+  const prevWork = state.works[(idx - 1 + state.works.length) % state.works.length];
+  const nextWork = state.works[(idx + 1) % state.works.length];
+
   const artist = getArtistById(work.artistId);
   const images = work.images || [];
   const mainImg = images[0] || '';
@@ -2017,8 +2207,8 @@ function openArtworkModal(workId) {
       ? `<div class="stage-thumbs">
           ${images
             .map(
-              (url, idx) =>
-                `<img src="${url}" alt="Vue ${idx + 1}" class="stage-thumb ${idx === 0 ? 'active' : ''}" data-stage-img="${url}" />`
+              (url, i) =>
+                `<img src="${url}" alt="Vue ${i + 1}" class="stage-thumb ${i === 0 ? 'active' : ''}" data-stage-img="${url}" />`
             )
             .join('')}
         </div>`
@@ -2039,76 +2229,81 @@ function openArtworkModal(workId) {
     ? `<a href="${work.sourceUrl}" target="_blank" rel="noopener" class="btn btn--small">Voir la page source réelle &nearr;</a>`
     : '';
 
-  const modalBody = document.getElementById('artworkModalBody');
-  modalBody.innerHTML = `
-    <div class="artwork-modal-grid">
-      <div class="artwork-modal__stage">
-        ${mainImg ? `<img src="${mainImg}" alt="${work.title}" id="mainStageImg" />` : ''}
-        ${thumbsHtml}
-        ${quoteHtml}
+  container.innerHTML = `
+    <div class="subpage-top-nav">
+      <a href="#/galerie" class="btn btn--outline btn--small">&larr; Retour à la galerie d'œuvres</a>
+      <div style="display:flex; gap:0.5rem;">
+        <a href="#/oeuvres/${prevWork.id}" class="btn btn--outline btn--small">&larr; Œuvre précédente</a>
+        <a href="#/oeuvres/${nextWork.id}" class="btn btn--outline btn--small">Œuvre suivante &rarr;</a>
       </div>
-      <div class="artwork-modal__cartel">
-        <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
-          ${work.discipline} &bull; ${work.formatType}
-        </span>
-        <h2 style="font-family:var(--font-heading); font-size:1.35rem; font-weight:500; margin:0.3rem 0;">
-          ${work.title} (${work.year})
-        </h2>
-        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">
-          Par <strong style="cursor:pointer; text-decoration:underline;" id="modalSwitchToArtist">${artist.name}</strong> — ${artist.roleTitle}
-        </p>
+    </div>
 
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.15rem;">
-          ${sourceBtnHtml}
-          ${artistLinksHtml}
+    <div class="subpage-sheet">
+      <div class="artwork-modal-grid">
+        <div class="artwork-modal__stage">
+          ${mainImg ? `<img src="${mainImg}" alt="${work.title}" id="mainStageImg" />` : ''}
+          ${thumbsHtml}
+          ${quoteHtml}
         </div>
+        <div class="artwork-modal__cartel">
+          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
+            ${work.discipline} &bull; ${work.formatType}
+          </span>
+          <h1 style="font-family:var(--font-heading); font-size:1.5rem; font-weight:500; margin:0.3rem 0;">
+            ${work.title} (${work.year})
+          </h1>
+          <p style="font-size:0.92rem; color:var(--text-secondary); margin-bottom:1rem;">
+            Par <a href="#/artistes/${artist.id}" style="color:var(--text-primary); font-weight:600; text-decoration:underline;">${artist.name}</a> — ${artist.roleTitle}
+          </p>
 
-        <div style="border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); padding:0.85rem 0; margin-bottom:1.15rem; font-size:0.83rem;">
-          <div><strong>Médium / Format :</strong> ${work.medium}</div>
-          <div style="margin-top:0.25rem;"><strong>Statut :</strong> ${work.availability}</div>
-          <div style="margin-top:0.25rem;"><strong>Référence :</strong> ${work.priceIndication}</div>
-        </div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.15rem;">
+            ${sourceBtnHtml}
+            ${artistLinksHtml}
+            <a href="#/artistes/${artist.id}" class="btn btn--outline btn--small">Voir la sous-page de ${artist.name} &rarr;</a>
+          </div>
 
-        <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.65; margin-bottom:1.5rem;">
-          ${work.description}
-        </p>
+          <div style="border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); padding:0.85rem 0; margin-bottom:1.15rem; font-size:0.83rem;">
+            <div><strong>Médium / Format :</strong> ${work.medium}</div>
+            <div style="margin-top:0.25rem;"><strong>Statut :</strong> ${work.availability}</div>
+            <div style="margin-top:0.25rem;"><strong>Référence :</strong> ${work.priceIndication}</div>
+          </div>
 
-        <div style="background:var(--bg-page); border:1px solid var(--border-color); padding:1.15rem;">
-          <h3 style="font-family:var(--font-heading); font-size:0.88rem; font-weight:500; margin-bottom:0.35rem;">
-            Contacter directement ${artist.name}
-          </h3>
-          <form id="directContactForm">
-            <div class="form-group">
-              <input type="text" class="form-input" placeholder="Votre nom" required style="background:#fff;" />
+          <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin-bottom:1.5rem;">
+            ${work.description}
+          </p>
+
+          <div style="background:var(--bg-page); border:1px solid var(--border-color); padding:1.15rem;">
+            <h3 style="font-family:var(--font-heading); font-size:0.88rem; font-weight:500; margin-bottom:0.35rem;">
+              Contacter directement ${artist.name}
+            </h3>
+            <form id="directContactForm">
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Votre nom" required style="background:#fff;" />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Votre courriel" required style="background:#fff;" />
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" required style="min-height:66px; background:#fff;">Bonjour ${artist.name}, je souhaite communiquer avec vous au sujet de « ${work.title} » présenté sur le portail de La Cargaison.</textarea>
+              </div>
+              <button type="submit" class="btn" style="width:100%;">Envoyer à l'artiste</button>
+            </form>
+            <div id="contactSuccessMsg" style="display:none; font-size:0.82rem; padding-top:0.5rem;">
+              Message transmis directement à ${artist.name}.
             </div>
-            <div class="form-group">
-              <input type="email" class="form-input" placeholder="Votre courriel" required style="background:#fff;" />
-            </div>
-            <div class="form-group">
-              <textarea class="form-textarea" required style="min-height:66px; background:#fff;">Bonjour ${artist.name}, je souhaite communiquer avec vous au sujet de « ${work.title} » présenté sur le portail de La Cargaison.</textarea>
-            </div>
-            <button type="submit" class="btn" style="width:100%;">Envoyer à l'artiste</button>
-          </form>
-          <div id="contactSuccessMsg" style="display:none; font-size:0.82rem; padding-top:0.5rem;">
-            Message transmis directement à ${artist.name}.
           </div>
         </div>
       </div>
     </div>
   `;
 
-  modalBody.querySelectorAll('[data-stage-img]').forEach((thumb) => {
+  container.querySelectorAll('[data-stage-img]').forEach((thumb) => {
     thumb.addEventListener('click', () => {
       const mainStage = document.getElementById('mainStageImg');
       if (mainStage) mainStage.src = thumb.dataset.stageImg;
-      modalBody.querySelectorAll('.stage-thumb').forEach((t) => t.classList.remove('active'));
+      container.querySelectorAll('.stage-thumb').forEach((t) => t.classList.remove('active'));
       thumb.classList.add('active');
     });
-  });
-
-  document.getElementById('modalSwitchToArtist').addEventListener('click', () => {
-    document.getElementById('artworkModal').classList.remove('open');
-    openArtistModal(artist.id);
   });
 
   document.getElementById('directContactForm').addEventListener('submit', (e) => {
@@ -2116,15 +2311,22 @@ function openArtworkModal(workId) {
     e.target.style.display = 'none';
     document.getElementById('contactSuccessMsg').style.display = 'block';
   });
-
-  document.getElementById('artworkModal').classList.add('open');
 }
 
 /* ==========================================================================
-   MODALE 2 : PORTFOLIO INDIVIDUEL D'UN MEMBRE AVEC SES VRAIS LIENS (#5)
+   SOUS-PAGE DÉDIÉE 2 : PORTFOLIO INDIVIDUEL D'UN MEMBRE (#/artistes/[slug])
    ========================================================================== */
 function openArtistModal(artistId) {
-  const artist = getArtistById(artistId);
+  navigateToRoute(`#/artistes/${artistId}`);
+}
+
+function renderArtisteSubpage(artistId) {
+  const container = document.getElementById('artisteSubpageContainer');
+  const idx = state.artists.findIndex((a) => a.id === artistId);
+  const artist = state.artists[idx] || state.artists[0];
+  const prevArtist = state.artists[(idx - 1 + state.artists.length) % state.artists.length];
+  const nextArtist = state.artists[(idx + 1) % state.artists.length];
+
   const artistWorks = state.works.filter((w) => w.artistId === artist.id);
 
   const linksHtml = (artist.links || [])
@@ -2136,13 +2338,13 @@ function openArtistModal(artistId) {
 
   const worksHtml =
     artistWorks.length === 0
-      ? `<p style="color:var(--text-muted); font-size:0.86rem;">Consultez directement la page officielle de <strong>${artist.name}</strong> via le bouton ci-dessus, ou ouvrez son atelier en mode simulation pour ajouter une œuvre dans la galerie.</p>`
-      : `<div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:1.15rem;">
+      ? `<p style="color:var(--text-muted); font-size:0.86rem;">Consultez directement la page officielle de <strong>${artist.name}</strong> via le bouton ci-dessus, ou cliquez sur « Simuler son atelier » pour publier une œuvre dans la galerie sous son profil.</p>`
+      : `<div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:1.25rem;">
           ${artistWorks
             .map((w) => {
               const cover = w.images && w.images[0] ? w.images[0] : '';
               return `
-                <article class="artwork-card" data-modal-open-work="${w.id}">
+                <article class="artwork-card" data-subpage-open-work="${w.id}">
                   <div class="artwork-card__media">
                     ${
                       cover
@@ -2150,9 +2352,9 @@ function openArtistModal(artistId) {
                         : `<div class="artwork-card__text-preview"><p>${w.textExcerpt || w.description}</p></div>`
                     }
                   </div>
-                  <div class="artwork-card__body" style="padding:0.9rem;">
-                    <h4 class="artwork-card__title" style="font-size:0.92rem;">${w.title} (${w.year})</h4>
-                    <p style="font-size:0.75rem; color:var(--text-muted);">${w.medium}</p>
+                  <div class="artwork-card__body" style="padding:1rem;">
+                    <h4 class="artwork-card__title" style="font-size:0.95rem;">${w.title} (${w.year})</h4>
+                    <p style="font-size:0.76rem; color:var(--text-muted);">${w.medium}</p>
                   </div>
                 </article>
               `;
@@ -2160,68 +2362,72 @@ function openArtistModal(artistId) {
             .join('')}
         </div>`;
 
-  const modalBody = document.getElementById('artistModalBody');
-  modalBody.innerHTML = `
-    <div class="artist-modal-header">
-      <img src="${artist.photo}" alt="${artist.name}" class="artist-modal-header__photo" />
-      <div>
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-          <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--text-muted);">
-            Membre officiel — ${artist.disciplineGroup}
-          </span>
-          <span style="font-size:0.74rem; padding:0.15rem 0.55rem; border:1px solid var(--border-color);">
-            <span class="status-dot"></span>${artist.availabilityStatus || 'Membre actif'}
-          </span>
-        </div>
-        <h2 style="font-family:var(--font-heading); font-size:1.65rem; font-weight:600; margin:0.2rem 0;">
-          ${artist.name}
-        </h2>
-        <p style="font-size:0.84rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-secondary); margin-bottom:0.9rem;">
-          ${artist.roleTitle}
-        </p>
-        <p style="font-size:0.9rem; color:var(--text-primary); line-height:1.65; margin-bottom:1rem;">
-          ${artist.bio}
-        </p>
-        <div style="background:var(--bg-page); border:1px solid var(--border-color); padding:0.85rem 1rem; font-size:0.82rem;">
-          <div><strong>Référence / Page liée sur lacargaison.org :</strong> ${artist.personalNews}</div>
-        </div>
-        <div class="external-links-row">
-          ${linksHtml}
-          <button type="button" class="btn btn--outline btn--small" id="artistModalContactBtn">Écrire à ${artist.name}</button>
-          <button type="button" class="btn btn--outline btn--small" id="artistModalImpersonateBtn">Simuler son atelier</button>
-        </div>
+  container.innerHTML = `
+    <div class="subpage-top-nav">
+      <a href="#/artistes" class="btn btn--outline btn--small">&larr; Retour au répertoire (${state.artists.length} membres)</a>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <a href="#/artistes/${prevArtist.id}" class="btn btn--outline btn--small">&larr; ${prevArtist.name}</a>
+        <a href="#/artistes/${nextArtist.id}" class="btn btn--outline btn--small">${nextArtist.name} &rarr;</a>
       </div>
     </div>
-    <div class="artist-modal-body">
-      <h3 style="font-family:var(--font-heading); font-size:1rem; font-weight:500; margin-bottom:1.1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border-color);">
-        Œuvres et projets rattachés à ${artist.name} (${artistWorks.length})
-      </h3>
-      ${worksHtml}
+
+    <div class="subpage-sheet">
+      <div class="artist-modal-header">
+        <img src="${artist.photo}" alt="${artist.name}" class="artist-modal-header__photo" />
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--text-muted);">
+              Membre n° ${idx + 1} sur ${state.artists.length} — ${artist.disciplineGroup}
+            </span>
+            <span style="font-size:0.74rem; padding:0.15rem 0.55rem; border:1px solid var(--border-color);">
+              <span class="status-dot"></span>${artist.availabilityStatus || 'Membre actif'}
+            </span>
+          </div>
+          <h1 style="font-family:var(--font-heading); font-size:1.75rem; font-weight:600; margin:0.2rem 0;">
+            ${artist.name}
+          </h1>
+          <p style="font-size:0.86rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-secondary); margin-bottom:0.95rem;">
+            ${artist.roleTitle}
+          </p>
+          <p style="font-size:0.92rem; color:var(--text-primary); line-height:1.65; margin-bottom:1.1rem;">
+            ${artist.bio}
+          </p>
+          <div style="background:var(--bg-page); border:1px solid var(--border-color); padding:0.85rem 1rem; font-size:0.82rem;">
+            <div><strong>Référence / Page liée sur lacargaison.org :</strong> ${artist.personalNews}</div>
+          </div>
+          <div class="external-links-row">
+            ${linksHtml}
+            <button type="button" class="btn btn--outline btn--small" id="artistSubpageContactBtn">Écrire à ${artist.name}</button>
+            <button type="button" class="btn btn--outline btn--small" id="artistSubpageImpersonateBtn">Simuler son atelier</button>
+          </div>
+        </div>
+      </div>
+      <div class="artist-modal-body">
+        <h3 style="font-family:var(--font-heading); font-size:1.02rem; font-weight:500; margin-bottom:1.15rem; padding-bottom:0.55rem; border-bottom:1px solid var(--border-color);">
+          Œuvres et projets rattachés à ${artist.name} (${artistWorks.length})
+        </h3>
+        ${worksHtml}
+      </div>
     </div>
   `;
 
-  document.getElementById('artistModalContactBtn').addEventListener('click', () => {
-    document.getElementById('artistModal').classList.remove('open');
+  document.getElementById('artistSubpageContactBtn').addEventListener('click', () => {
     openPrivateMsgModal(artist.id, `Prise de contact via le répertoire de La Cargaison`);
   });
 
-  document.getElementById('artistModalImpersonateBtn').addEventListener('click', () => {
-    document.getElementById('artistModal').classList.remove('open');
+  document.getElementById('artistSubpageImpersonateBtn').addEventListener('click', () => {
     state.currentMemberId = artist.id;
     if (state.currentRole === 'public') state.currentRole = 'member';
     saveState();
     renderAll();
-    switchView('atelier');
+    navigateToRoute('#/atelier/portfolio');
   });
 
-  modalBody.querySelectorAll('[data-modal-open-work]').forEach((card) => {
+  container.querySelectorAll('[data-subpage-open-work]').forEach((card) => {
     card.addEventListener('click', () => {
-      document.getElementById('artistModal').classList.remove('open');
-      openArtworkModal(card.dataset.modalOpenWork);
+      navigateToRoute(`#/oeuvres/${card.dataset.subpageOpenWork}`);
     });
   });
-
-  document.getElementById('artistModal').classList.add('open');
 }
 
 /* ==========================================================================

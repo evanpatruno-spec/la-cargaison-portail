@@ -276,6 +276,88 @@ body {
 }
 
 /* ==========================================================================
+   BARRE DE STRUCTURE DU SITE / FIL D'ARIANE (BREADCRUMB & PERMALIEN)
+   ========================================================================== */
+.breadcrumb-bar {
+  background-color: var(--bg-page);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb-bar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.breadcrumb-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumb-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  color: var(--border-color);
+}
+
+.breadcrumb-current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.breadcrumb-url-pill {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.5rem;
+}
+
+/* ==========================================================================
+   SOUS-PAGES DÉDIÉES (FICHE ARTISTE & FICHE ŒUVRE)
+   ========================================================================== */
+.subpage-top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.subpage-sheet {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
    SOUS-NAVIGATION ÉDITORIALE (Onglets internes propres)
    ========================================================================== */
 .subnav-bar {
